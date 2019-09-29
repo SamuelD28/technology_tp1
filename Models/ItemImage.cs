@@ -8,6 +8,9 @@ namespace technology_tp1.Models
 {
     public class ItemImage
     {
+        // Limits the maximum file size to 1mb
+        public static int MAXIMUM_FILE_SIZE = 1000000;
+
         public int Id { get; set; }
 
         public byte[] Small { get; set; }
@@ -19,7 +22,7 @@ namespace technology_tp1.Models
         public string GetBase64Encoded(byte[] file)
         {
             string base64 = Convert.ToBase64String(file);
-            return String.Format("data:image/gif;base64,{0}", base64);
+            return string.Format("data:image/gif;base64,{0}", base64);
         }
 
         public static byte[] ScaleImage(byte[] imageByte, int height, int width)

@@ -14,6 +14,7 @@
               enctype="multipart/form-data" 
               asp-action="Create">
             <div class="form-group row">
+                <span asp-validation-for="Full" class="text-danger"></span>
                 <label class="control-label">Image</label>
                 <input type="file" name="file">
             </div>

@@ -60,8 +60,14 @@ namespace technology_tp1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(IFormFile file)
         {
-            ItemImage image = new ItemImage();
+            // Limit maximum file size to 1mb
+            if(file.Length > ItemImage.MAXIMUM_FILE_SIZE)
+            {
+                ModelState.AddModelError("Full", "File exceed the maximum allowed of 1mb");
+                return View();
+            }
 
+            ItemImage image = new ItemImage();
             try
             {
                 image.Full = ParseImage(file);
