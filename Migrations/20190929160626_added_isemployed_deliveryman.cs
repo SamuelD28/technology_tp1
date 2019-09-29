@@ -2,7 +2,7 @@
 
 namespace technology_tp1.Migrations
 {
-    public partial class added_isemployed : Migration
+    public partial class added_isemployed_deliveryman : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -85,7 +85,7 @@ namespace technology_tp1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,IsEmployed")] DeliveryMan deliveryMan)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,IsEmployed,IsDeactivated")] DeliveryMan deliveryMan)
         {
             if (id != deliveryMan.Id)
             {

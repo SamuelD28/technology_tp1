@@ -17,6 +17,8 @@ namespace technology_tp1.Models
 
         public bool IsEmployed { get; set; }
 
+        public bool IsDeactivated { get; set; }
+
         public DeliveryMan(){}
 
         public DeliveryMan(int id, string name, string phone, bool isEmployed)

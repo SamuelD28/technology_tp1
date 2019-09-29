@@ -9,8 +9,8 @@ using technology_tp1.Models;
 namespace technology_tp1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190929160626_added_isemployed")]
-    partial class added_isemployed
+    [Migration("20190929160626_added_isemployed_deliveryman")]
+    partial class added_isemployed_deliveryman
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
