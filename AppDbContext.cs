@@ -10,6 +10,10 @@ namespace technology_tp1.Models
     {
         public DbSet<DeliveryMan> DeliveryMen { get; set; }
 
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<MenuItem> MenuItems{ get; set; }
+
         public AppDbContext(){}
 
         public AppDbContext(DbContextOptions options):base(options){}
