@@ -10,7 +10,7 @@ namespace technology_tp1.Models
     {
         public DbSet<DeliveryMan> DeliveryMen { get; set; }
 
-        public DbSet<Image> Images { get; set; }
+        public DbSet<ItemImage> Images { get; set; }
 
         public DbSet<MenuItem> MenuItems{ get; set; }
 
