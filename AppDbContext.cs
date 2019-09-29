@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Faker;
 
 namespace technology_tp1.Models
 {
@@ -33,14 +32,14 @@ namespace technology_tp1.Models
         private DeliveryMan[] Seed()
         {
             List<DeliveryMan> deliveryMen = new List<DeliveryMan>();
-            for (int i = 0; i < 50; i++)
+            for (int i = 1; i < 50; i++)
             {
                 deliveryMen.Add(
                     new DeliveryMan(
                             i * -1,
-                            NameFaker.Name(),
-                            PhoneFaker.Phone(),
-                            BooleanFaker.Boolean()
+                            Faker.NameFaker.Name(),
+                            Faker.PhoneFaker.Phone(),
+                            Faker.BooleanFaker.Boolean()
                         ));
             }
             return deliveryMen.ToArray();
