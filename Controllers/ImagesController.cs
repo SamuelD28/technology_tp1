@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using technology_tp1.Models;
 using System.Drawing;
 using System.Drawing.Imaging;
+using static technology_tp1.Models.ItemImage;
 
 namespace technology_tp1.Controllers
 {
@@ -61,32 +62,19 @@ namespace technology_tp1.Controllers
         {
             ItemImage image = new ItemImage();
 
-            using (var imageStream = new MemoryStream())
+            try
             {
-                await file.CopyToAsync(imageStream);
-                Image fullsizeImage = 
-                    Image.FromStream(imageStream);
-
-                Image thumbnail = 
-                    fullsizeImage.GetThumbnailImage(
-                        200,
-                        200, 
-                        null, 
-                        IntPtr.Zero
-                    );
-
-                MemoryStream thumbnailStream = new MemoryStream();
-                thumbnail.Save(thumbnailStream, ImageFormat.Jpeg);  //Or whatever format you want.
-
-                thumbnailStream.ToArray();  //Returns a new byte array.
-
-                image.File = imageStream.ToArray();
-                image.Thumbnail = thumbnailStream.ToArray();
+                image.Full = ParseImage(file);
+                image.Medium = ScaleImage(image.Full, 500, 500);
+                image.Small = ScaleImage(image.Full, 250, 250);
 
                 _context.Add(image);
                 await _context.SaveChangesAsync();
-
                 return RedirectToAction(nameof(Index));
+            }
+            catch (IOException)
+            {
+                return View(new ErrorViewModel() { RequestId = "Upload image file" });
             }
         }
 
