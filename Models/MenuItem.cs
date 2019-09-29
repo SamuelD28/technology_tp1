@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,12 +9,16 @@ namespace technology_tp1.Models
 {
     public class MenuItem
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string  Nom { get; set; }
+        [Required]
+        public string  Name { get; set; }
 
-        public double Prix { get; set; }
+        [Required]
+        public double Price { get; set; }
 
+        [Required]
         public int ImageId { get; set; }
 
         public ItemImage Image { get; set; }

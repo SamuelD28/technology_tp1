@@ -47,7 +47,7 @@ namespace technology_tp1.Controllers
         // GET: MenuItems/Create
         public IActionResult Create()
         {
-            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Id");
+            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Name");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace technology_tp1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nom,Prix,ImageId")] MenuItem menuItem)
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,ImageId")] MenuItem menuItem)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +64,7 @@ namespace technology_tp1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Id", menuItem.ImageId);
+            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Name", menuItem.ImageId);
             return View(menuItem);
         }
 
@@ -81,7 +81,7 @@ namespace technology_tp1.Controllers
             {
                 return NotFound();
             }
-            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Id", menuItem.ImageId);
+            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Name", menuItem.ImageId);
             return View(menuItem);
         }
 
@@ -90,7 +90,7 @@ namespace technology_tp1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Prix,ImageId")] MenuItem menuItem)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,ImageId")] MenuItem menuItem)
         {
             if (id != menuItem.Id)
             {
@@ -117,7 +117,7 @@ namespace technology_tp1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Id", menuItem.ImageId);
+            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Name", menuItem.ImageId);
             return View(menuItem);
         }
 
