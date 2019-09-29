@@ -54,16 +54,17 @@ namespace technology_tp1.Controllers
         }
 
         // POST: Images/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(IFormFile file)
         {
-            // Limit maximum file size to 1mb
+            // Limit maximum file size to 1mb.
             if(file.Length > ItemImage.MAXIMUM_FILE_SIZE)
             {
-                ModelState.AddModelError("Full", "File exceed the maximum allowed of 1mb");
+                ModelState.AddModelError(
+                    "Full", 
+                    $"File exceed the maximum allowed of {MAXIMUM_FILE_SIZE} bytes"
+                );
                 return View();
             }
 
@@ -102,11 +103,9 @@ namespace technology_tp1.Controllers
         }
 
         // POST: Images/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,File")] ItemImage image)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] ItemImage image)
         {
             if (id != image.Id)
             {
