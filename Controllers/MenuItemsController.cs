@@ -47,7 +47,7 @@ namespace technology_tp1.Controllers
         // GET: MenuItems/Create
         public IActionResult Create()
         {
-            ViewData["ImageId"] = new SelectList(_context.Images, "Id", "Id");
+            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Id");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace technology_tp1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ImageId"] = new SelectList(_context.Images, "Id", "Id", menuItem.ImageId);
+            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Id", menuItem.ImageId);
             return View(menuItem);
         }
 
@@ -81,7 +81,7 @@ namespace technology_tp1.Controllers
             {
                 return NotFound();
             }
-            ViewData["ImageId"] = new SelectList(_context.Images, "Id", "Id", menuItem.ImageId);
+            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Id", menuItem.ImageId);
             return View(menuItem);
         }
 
@@ -117,7 +117,7 @@ namespace technology_tp1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ImageId"] = new SelectList(_context.Images, "Id", "Id", menuItem.ImageId);
+            ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Id", menuItem.ImageId);
             return View(menuItem);
         }
 

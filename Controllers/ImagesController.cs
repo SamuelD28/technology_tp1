@@ -26,7 +26,7 @@ namespace technology_tp1.Controllers
         // GET: Images
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Images.ToListAsync());
+            return View(await _context.ItemImages.ToListAsync());
         }
 
         // GET: Images/Details/5
@@ -37,7 +37,8 @@ namespace technology_tp1.Controllers
                 return NotFound();
             }
 
-            var image = await _context.Images
+            var image = await _context
+                .ItemImages
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (image == null)
             {
@@ -56,10 +57,10 @@ namespace technology_tp1.Controllers
         // POST: Images/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(IFormFile file)
+        public async Task<IActionResult> Create([Bind("Name")] ItemImage itemImage, IFormFile file)
         {
             // Limit maximum file size to 1mb.
-            if(file.Length > ItemImage.MAXIMUM_FILE_SIZE)
+            if(file.Length > MAXIMUM_FILE_SIZE)
             {
                 ModelState.AddModelError(
                     "Full", 
@@ -68,14 +69,13 @@ namespace technology_tp1.Controllers
                 return View();
             }
 
-            ItemImage image = new ItemImage();
             try
             {
-                image.Full = ParseImage(file);
-                image.Medium = ScaleImage(image.Full, 500, 500);
-                image.Small = ScaleImage(image.Full, 250, 250);
+                itemImage.Full = ParseImage(file);
+                itemImage.Medium = ScaleImage(itemImage.Full, 500, 500);
+                itemImage.Small = ScaleImage(itemImage.Full, 250, 250);
 
-                _context.Add(image);
+                _context.Add(itemImage);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -94,7 +94,7 @@ namespace technology_tp1.Controllers
                 return NotFound();
             }
 
-            var image = await _context.Images.FindAsync(id);
+            var image = await _context.ItemImages.FindAsync(id);
             if (image == null)
             {
                 return NotFound();
@@ -105,34 +105,30 @@ namespace technology_tp1.Controllers
         // POST: Images/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] ItemImage image)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name")] ItemImage imageData)
         {
-            if (id != image.Id)
+            if (id != imageData.Id || !ImageExists(imageData.Id))
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(image);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ImageExists(image.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                ItemImage updatedImage = _context
+                    .ItemImages
+                    .Where(img => img.Id == imageData.Id)
+                    .First();
+                updatedImage.Name = imageData.Name;
+
+                _context.Update(updatedImage);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(image);
+            catch (Exception)
+            {
+                return Redirect("/");
+            }
         }
 
         // GET: Images/Delete/5
@@ -143,7 +139,7 @@ namespace technology_tp1.Controllers
                 return NotFound();
             }
 
-            var image = await _context.Images
+            var image = await _context.ItemImages
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (image == null)
             {
@@ -158,15 +154,15 @@ namespace technology_tp1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var image = await _context.Images.FindAsync(id);
-            _context.Images.Remove(image);
+            var image = await _context.ItemImages.FindAsync(id);
+            _context.ItemImages.Remove(image);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ImageExists(int id)
         {
-            return _context.Images.Any(e => e.Id == id);
+            return _context.ItemImages.Any(e => e.Id == id);
         }
     }
 }
