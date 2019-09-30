@@ -1,0 +1,296 @@
+﻿[
+  {
+    "id": -1,
+    "name": "Helena Walker",
+    "phone": "809-089-22784",
+    "isEmployed": true
+  },
+  {
+    "id": -2,
+    "name": "Nancy Stevens",
+    "phone": "173-748-61201",
+    "isEmployed": false
+  },
+  {
+    "id": -3,
+    "name": "Sandra Jeffries",
+    "phone": "322-514-37720",
+    "isEmployed": false
+  },
+  {
+    "id": -4,
+    "name": "Ann Lake",
+    "phone": "568-166-28901",
+    "isEmployed": true
+  },
+  {
+    "id": -5,
+    "name": "Wendy Robertson",
+    "phone": "763-441-62538",
+    "isEmployed": false
+  },
+  {
+    "id": -6,
+    "name": "Kimberly Jefferson",
+    "phone": "801-754-33171",
+    "isEmployed": false
+  },
+  {
+    "id": -7,
+    "name": "Kenneth Yorke",
+    "phone": "567-043-61538",
+    "isEmployed": false
+  },
+  {
+    "id": -8,
+    "name": "Ronald Thatcher",
+    "phone": "663-511-79324",
+    "isEmployed": false
+  },
+  {
+    "id": -9,
+    "name": "Michael Hall",
+    "phone": "847-572-35102",
+    "isEmployed": true
+  },
+  {
+    "id": -10,
+    "name": "Jennifer Robertson",
+    "phone": "105-305-96488",
+    "isEmployed": true
+  },
+  {
+    "id": -11,
+    "name": "Robert Abel",
+    "phone": "034-254-67063",
+    "isEmployed": false
+  },
+  {
+    "id": -12,
+    "name": "Joseph Washington",
+    "phone": "114-613-79678",
+    "isEmployed": true
+  },
+  {
+    "id": -13,
+    "name": "Matthew Washington",
+    "phone": "497-008-43924",
+    "isEmployed": false
+  },
+  {
+    "id": -14,
+    "name": "Matthew Rodriguez",
+    "phone": "571-477-26662",
+    "isEmployed": false
+  },
+  {
+    "id": -15,
+    "name": "Jessica Peters",
+    "phone": "630-113-21506",
+    "isEmployed": true
+  },
+  {
+    "id": -16,
+    "name": "Helen Oates",
+    "phone": "032-820-68922",
+    "isEmployed": false
+  },
+  {
+    "id": -17,
+    "name": "James Robertson",
+    "phone": "468-250-12432",
+    "isEmployed": true
+  },
+  {
+    "id": -18,
+    "name": "Helena Anderson",
+    "phone": "972-059-19250",
+    "isEmployed": true
+  },
+  {
+    "id": -19,
+    "name": "Thomas Wilson",
+    "phone": "116-760-83859",
+    "isEmployed": false
+  },
+  {
+    "id": -20,
+    "name": "Karen Yorke",
+    "phone": "403-924-90872",
+    "isEmployed": true
+  },
+  {
+    "id": -21,
+    "name": "Margaret Martin",
+    "phone": "503-520-88700",
+    "isEmployed": false
+  },
+  {
+    "id": -22,
+    "name": "James Oates",
+    "phone": "934-219-11641",
+    "isEmployed": false
+  },
+  {
+    "id": -23,
+    "name": "Ann Jeffries",
+    "phone": "226-208-62295",
+    "isEmployed": false
+  },
+  {
+    "id": -24,
+    "name": "Tabitha Davis",
+    "phone": "156-289-24553",
+    "isEmployed": true
+  },
+  {
+    "id": -25,
+    "name": "Anna Clark",
+    "phone": "907-378-71382",
+    "isEmployed": false
+  },
+  {
+    "id": -26,
+    "name": "Edwin Lake",
+    "phone": "752-435-45149",
+    "isEmployed": true
+  },
+  {
+    "id": -27,
+    "name": "Matthew Robinson",
+    "phone": "902-094-42143",
+    "isEmployed": false
+  },
+  {
+    "id": -28,
+    "name": "Hugh Miller",
+    "phone": "801-087-62654",
+    "isEmployed": true
+  },
+  {
+    "id": -29,
+    "name": "Sarah Smith",
+    "phone": "054-691-81302",
+    "isEmployed": false
+  },
+  {
+    "id": -30,
+    "name": "Adam Wilson",
+    "phone": "121-568-61792",
+    "isEmployed": true
+  },
+  {
+    "id": -31,
+    "name": "Karen Kirby",
+    "phone": "984-438-86549",
+    "isEmployed": true
+  },
+  {
+    "id": -32,
+    "name": "Alison Oates",
+    "phone": "552-742-40283",
+    "isEmployed": false
+  },
+  {
+    "id": -33,
+    "name": "Michelle Oates",
+    "phone": "435-803-86612",
+    "isEmployed": true
+  },
+  {
+    "id": -34,
+    "name": "Beryl Peters",
+    "phone": "880-136-57015",
+    "isEmployed": true
+  },
+  {
+    "id": -35,
+    "name": "Joseph Anderson",
+    "phone": "319-806-39937",
+    "isEmployed": true
+  },
+  {
+    "id": -36,
+    "name": "Laura Clark",
+    "phone": "679-595-35398",
+    "isEmployed": true
+  },
+  {
+    "id": -37,
+    "name": "Mary Lee",
+    "phone": "561-581-67104",
+    "isEmployed": true
+  },
+  {
+    "id": -38,
+    "name": "Roger Peters",
+    "phone": "792-947-96559",
+    "isEmployed": true
+  },
+  {
+    "id": -39,
+    "name": "Sarah Clarke",
+    "phone": "082-480-80700",
+    "isEmployed": false
+  },
+  {
+    "id": -40,
+    "name": "Karen Kirby",
+    "phone": "527-629-35175",
+    "isEmployed": true
+  },
+  {
+    "id": -41,
+    "name": "Anne Washington",
+    "phone": "508-996-77059",
+    "isEmployed": true
+  },
+  {
+    "id": -42,
+    "name": "Susan Jones",
+    "phone": "711-096-89627",
+    "isEmployed": false
+  },
+  {
+    "id": -43,
+    "name": "Matthew Davis",
+    "phone": "129-759-18588",
+    "isEmployed": true
+  },
+  {
+    "id": -44,
+    "name": "Anne Harris",
+    "phone": "076-704-84127",
+    "isEmployed": false
+  },
+  {
+    "id": -45,
+    "name": "Paul Davies",
+    "phone": "260-746-97355",
+    "isEmployed": false
+  },
+  {
+    "id": -46,
+    "name": "Cheryl Clark",
+    "phone": "108-229-63582",
+    "isEmployed": true
+  },
+  {
+    "id": -47,
+    "name": "Laura Stevens",
+    "phone": "880-361-49660",
+    "isEmployed": false
+  },
+  {
+    "id": -48,
+    "name": "Donald Lake",
+    "phone": "022-916-20525",
+    "isEmployed": false
+  },
+  {
+    "id": -49,
+    "name": "Thomas Clarkson",
+    "phone": "901-567-22596",
+    "isEmployed": false
+  }
+]
