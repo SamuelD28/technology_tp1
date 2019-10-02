@@ -72,7 +72,7 @@ namespace technology_tp1.Models
         private static void createJSONSeedDeliveryMan()
         {
             JArray jArray = new JArray();
-            for (int i = 1; i < 50; i++)
+            for (int i = 1; i < 51; i++)
             {
                 JObject deliveryMan = new JObject();
                 deliveryMan.Add("id", new JValue(i * -1));
