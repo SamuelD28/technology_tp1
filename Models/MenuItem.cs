@@ -16,7 +16,7 @@ namespace technology_tp1.Models
         public string  Name { get; set; }
 
         [Required]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         [Required]
         public int ImageId { get; set; }
