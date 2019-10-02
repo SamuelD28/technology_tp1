@@ -22,7 +22,7 @@ namespace technology_tp1.Models
         [NotMapped]
         public byte[] SmallBlob
         {
-            get => Convert.FromBase64String(Small);
+            get => Convert.FromBase64String(Small ?? String.Empty);
             set
             {
                 Small = Convert.ToBase64String(value);
@@ -32,7 +32,7 @@ namespace technology_tp1.Models
         [NotMapped]
         public byte[] MediumBlob
         {
-            get => Convert.FromBase64String(Medium);
+            get => Convert.FromBase64String(Medium ?? String.Empty);
             set
             {
                 Medium = Convert.ToBase64String(value);
@@ -42,7 +42,7 @@ namespace technology_tp1.Models
         [NotMapped]
         public byte[] FullBlob
         {
-            get => Convert.FromBase64String(Full);
+            get => Convert.FromBase64String(Full ?? String.Empty);
             set
             {
                 Full = Convert.ToBase64String(value);
@@ -61,7 +61,7 @@ namespace technology_tp1.Models
         public string GetBase64Encoded(byte[] file)
         {
             string base64 = Convert.ToBase64String(file);
-            return string.Format("data:image/gif;base64,{0}", base64);
+            return string.Format("data:image/png;base64,{0}", base64);
         }
 
         public static byte[] ScaleImage(byte[] imageInBytes, int height, int width)
@@ -77,7 +77,7 @@ namespace technology_tp1.Models
                         null,
                         IntPtr.Zero
                 );
-                image.Save(scaledImage, ImageFormat.Jpeg);
+                image.Save(scaledImage, ImageFormat.Png);
                 return scaledImage.ToArray();
             }
         }
