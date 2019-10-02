@@ -19,14 +19,44 @@ namespace technology_tp1.Models
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public byte[] Small { get; set; }
+        [NotMapped]
+        public byte[] SmallBlob
+        {
+            get => Convert.FromBase64String(Small);
+            set
+            {
+                Small = Convert.ToBase64String(value);
+            }
+        }
+
+        [NotMapped]
+        public byte[] MediumBlob
+        {
+            get => Convert.FromBase64String(Medium);
+            set
+            {
+                Medium = Convert.ToBase64String(value);
+            }
+        }
+
+        [NotMapped]
+        public byte[] FullBlob
+        {
+            get => Convert.FromBase64String(Full);
+            set
+            {
+                Full = Convert.ToBase64String(value);
+            }
+        }
 
         [Required]
-        public byte[] Medium { get; set; }
+        public string Small { get; set; }
 
         [Required]
-        public byte[] Full { get; set; }
+        public string Medium { get; set; }
+
+        [Required]
+        public string Full { get; set; }
 
         public string GetBase64Encoded(byte[] file)
         {

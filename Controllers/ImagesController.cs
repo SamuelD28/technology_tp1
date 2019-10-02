@@ -71,9 +71,9 @@ namespace technology_tp1.Controllers
 
             try
             {
-                itemImage.Full = ParseImage(file);
-                itemImage.Medium = ScaleImage(itemImage.Full, 500, 500);
-                itemImage.Small = ScaleImage(itemImage.Full, 250, 250);
+                itemImage.FullBlob = ParseImage(file);
+                itemImage.MediumBlob = ScaleImage(itemImage.FullBlob, 500, 500);
+                itemImage.SmallBlob = ScaleImage(itemImage.FullBlob, 250, 250);
 
                 _context.Add(itemImage);
                 await _context.SaveChangesAsync();
