@@ -17,11 +17,11 @@ namespace technology_tp1
         {
             get
             {
-                List<Models.ItemImage> deliveryMen = new List<Models.ItemImage>();
+                List<Models.ItemImage> images = new List<Models.ItemImage>();
                 foreach (var item in JToken)
                 {
                     JObject jsonItem = (JObject)item;
-                    deliveryMen.Add(new Models.ItemImage()
+                    images.Add(new Models.ItemImage()
                     {
                         Id = jsonItem.Value<int>("id"),
                         Name = jsonItem.Value<string>("name"),
@@ -30,7 +30,7 @@ namespace technology_tp1
                         Full = jsonItem.Value<string>("full"),
                     });
                 }
-                return deliveryMen.Cast<T>();
+                return images.Cast<T>();
             }
         }
 
@@ -41,7 +41,7 @@ namespace technology_tp1
             foreach (var picturePath in Directory.GetFiles(PicturesDirectory))
             {
                 byte[] image = File.ReadAllBytes(picturePath);
-                string name = picturePath.Split('/').Last().Split('.').Last();
+                string name = picturePath.Split('/').Last();
                 JObject picture = new JObject();
                 string imageDataBase64 = Convert.ToBase64String(File.ReadAllBytes(picturePath));
 
