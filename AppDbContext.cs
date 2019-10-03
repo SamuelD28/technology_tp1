@@ -43,9 +43,9 @@ namespace technology_tp1.Models
                 .Entity<ItemImage>()
                 .HasData(Seed(ForgeFactory.ForgeImageItem));
 
-            //modelBuilder
-            //   .Entity<ItemImage>()
-            //   .HasData(Seed(ForgeFactory.ForgeMenuItem));
+            modelBuilder
+               .Entity<MenuItem>()
+               .HasData(Seed(ForgeFactory.ForgeMenuItem));
         }
 
         private static IEnumerable<T> Seed<T>(ForgeJSONSeed<T> forge)
