@@ -42,20 +42,14 @@ namespace technology_tp1.Models
 
         private DeliveryMan[] Seed()
         {
-            if (!File.Exists(SeedDirectoryPath + FileNameSeedDeliveryMan))
+            ForgeJSONSeed forge = new ForgeJSONSeedDeliveryMan();
+            if (!forge.Exist)
             {
-                createJSONSeedDeliveryMan();
-            }
-
-            JArray jObject;
-            using (StreamReader streamReader = System.IO.File.OpenText(SeedDirectoryPath + FileNameSeedDeliveryMan))
-            using (JsonTextReader jsonTextReader = new JsonTextReader(streamReader))
-            {
-                jObject = (JArray)JToken.ReadFrom(jsonTextReader);
+                forge.Forge();
             }
 
             List<DeliveryMan> deliveryMen = new List<DeliveryMan>();
-            foreach (var item in jObject)
+            foreach (var item in forge.JToken)
             {
                 JObject jsonItem = (JObject)item;
                 deliveryMen.Add(new DeliveryMan()
@@ -67,27 +61,6 @@ namespace technology_tp1.Models
                 });
             }
             return deliveryMen.ToArray();
-        }
-
-        private static void createJSONSeedDeliveryMan()
-        {
-            JArray jArray = new JArray();
-            for (int i = 1; i < 51; i++)
-            {
-                JObject deliveryMan = new JObject();
-                deliveryMan.Add("id", new JValue(i * -1));
-                deliveryMan.Add("name", new JValue(Faker.NameFaker.Name()));
-                deliveryMan.Add("phone", new JValue(Faker.PhoneFaker.Phone()));
-                deliveryMan.Add("isEmployed", new JValue(Faker.BooleanFaker.Boolean()));
-                jArray.Add(deliveryMan);
-            }
-
-            using (StreamWriter streamWriter = new StreamWriter(System.IO.File.OpenWrite(SeedDirectoryPath + FileNameSeedDeliveryMan)))
-            using (JsonTextWriter jsonTextReader = new JsonTextWriter(streamWriter))
-            {
-                JsonSerializer jsonSerializer = new JsonSerializer();
-                jsonSerializer.Serialize(jsonTextReader, jArray);
-            }
         }
     }
 }
