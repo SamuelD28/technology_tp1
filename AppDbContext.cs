@@ -37,30 +37,44 @@ namespace technology_tp1.Models
         {
             modelBuilder
                 .Entity<DeliveryMan>()
-                .HasData(Seed());
+                .HasData(Seed(ForgeFactory.ForgeDeliveryMan));
+
+            modelBuilder
+                .Entity<ItemImage>()
+                .HasData(Seed(ForgeFactory.ForgeImageItem));
         }
 
-        private DeliveryMan[] Seed()
+        private static IEnumerable<T> Seed<T>(ForgeJSONSeed<T> forge)
         {
-            ForgeJSONSeed forge = new ForgeJSONSeedDeliveryMan();
             if (!forge.Exist)
             {
                 forge.Forge();
             }
 
-            List<DeliveryMan> deliveryMen = new List<DeliveryMan>();
-            foreach (var item in forge.JToken)
-            {
-                JObject jsonItem = (JObject)item;
-                deliveryMen.Add(new DeliveryMan()
-                {
-                    Id = jsonItem.Value<int>("id"),
-                    Name = jsonItem.Value<string>("name"),
-                    Phone = jsonItem.Value<string>("phone"),
-                    IsEmployed = jsonItem.Value<bool>("isEmployed"),
-                });
-            }
-            return deliveryMen.ToArray();
+            return forge.Values;
         }
+
+        //private DeliveryMan[] Seed()
+        //{
+        //    ForgeJSONSeed forge = new ForgeJSONSeedDeliveryMan();
+        //    if (!forge.Exist)
+        //    {
+        //        forge.Forge();
+        //    }
+
+        //    List<DeliveryMan> deliveryMen = new List<DeliveryMan>();
+        //    foreach (var item in forge.JToken)
+        //    {
+        //        JObject jsonItem = (JObject)item;
+        //        deliveryMen.Add(new DeliveryMan()
+        //        {
+        //            Id = jsonItem.Value<int>("id"),
+        //            Name = jsonItem.Value<string>("name"),
+        //            Phone = jsonItem.Value<string>("phone"),
+        //            IsEmployed = jsonItem.Value<bool>("isEmployed"),
+        //        });
+        //    }
+        //    return deliveryMen.ToArray();
+        //}
     }
 }

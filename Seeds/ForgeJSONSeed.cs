@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace technology_tp1
 {
-    public abstract class ForgeJSONSeed
+    public abstract class ForgeJSONSeed<T>
     {
         private const string FilePath = "Seeds/json/";
 
@@ -18,7 +18,9 @@ namespace technology_tp1
 
         public bool Exist => File.Exists(FilePath + FileName);
 
-        public JToken JToken
+        public abstract IEnumerable<T> Values { get; }
+
+        protected JToken JToken
         {
             get
             {
@@ -26,7 +28,7 @@ namespace technology_tp1
                 using (StreamReader streamReader = System.IO.File.OpenText(FilePath + FileName))
                 using (JsonTextReader jsonTextReader = new JsonTextReader(streamReader))
                 {
-                    return (JArray)JToken.ReadFrom(jsonTextReader);
+                    return JToken.ReadFrom(jsonTextReader);
                 }
             }
         }

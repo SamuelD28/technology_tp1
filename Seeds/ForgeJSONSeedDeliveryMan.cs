@@ -6,8 +6,28 @@ using Newtonsoft.Json.Linq;
 
 namespace technology_tp1
 {
-    public class ForgeJSONSeedDeliveryMan : ForgeJSONSeed
+    public class ForgeJSONSeedDeliveryMan<T> : ForgeJSONSeed<T> where T : Models.DeliveryMan
     {
+        public override IEnumerable<T> Values
+        {
+            get
+            {
+                List<Models.DeliveryMan> deliveryMen = new List<Models.DeliveryMan>();
+                foreach (var item in JToken)
+                {
+                    JObject jsonItem = (JObject)item;
+                    deliveryMen.Add(new Models.DeliveryMan()
+                    {
+                        Id = jsonItem.Value<int>("id"),
+                        Name = jsonItem.Value<string>("name"),
+                        Phone = jsonItem.Value<string>("phone"),
+                        IsEmployed = jsonItem.Value<bool>("isEmployed"),
+                    });
+                }
+                return deliveryMen.Cast<T>();
+            }
+        }
+
         protected override string FileName => "DeliveryManSeed.json";
 
         protected override JToken CreateJSON()
