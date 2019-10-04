@@ -25,6 +25,9 @@ namespace technology_tp1
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add localization services (IStringLocalizer)
+            services.AddLocalization(options => options.ResourcesPath = "Ressources");
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
