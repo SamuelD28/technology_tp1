@@ -4,14 +4,23 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using technology_tp1.Models;
 
 namespace technology_tp1.Controllers
 {
     public class HomeController : Controller
     {
+        private IStringLocalizer<HomeController> _localizer;
+
+        public HomeController(IStringLocalizer<HomeController> stringLocalizer)
+        {
+           _localizer = stringLocalizer;
+        }
+
         public IActionResult Index()
         {
+            ViewData["Welcome"] = _localizer["Welcome"];
             return View();
         }
 
