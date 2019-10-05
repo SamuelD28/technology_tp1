@@ -14,19 +14,24 @@ $(".modal-btn").each(function (index, btn) {
     btn.click(function () {
         $("#myModal").css("display", "block");
         $("#myModal").find("#modalPicture").attr("style", "background-image: url('data:image/png;base64," + $(this).children("data").attr("image") + "'); background-size: cover; background-position: center");
-        $("#myModal").find("#modalContent").text($(this).children("data").attr("name"));
+        //$("#myModal").find("#modalContent").text($(this).children("data").attr("name"));
     }
     );
 });
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    $("#myModal").css("display", "none");
+span.onclick = function () {
+    exitModal();
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == document.getElementById("myModal")) {
-      $("#myModal").css("display", "none");
-  }
+        exitModal();
+    }
+}
+
+function exitModal() {
+    $("#quantity").val(1);
+    $("#myModal").css("display", "none");
 }
