@@ -21,4 +21,9 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <None Include="wwwroot\js\modal.js" />
+  </ItemGroup>
+
 </Project>

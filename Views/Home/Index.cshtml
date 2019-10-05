@@ -6,3 +6,39 @@
     <h1 class="display-4">@ViewData["welcome"]</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@foreach (var item in Model.MenuItems)
+{
+<div class="row modal-btn menu-item">
+    <div class="col-sm-3" style="background-image: url('data:image/png;base64,@item.Image.Small'); background-size: cover; background-position: center">
+    </div>
+    @item.Name
+</div>
+}
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="container">
+            <div class="row flex-row-reverse">
+                <div class="modal-close">&times;</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    Picture
+                </div>
+                <div class="col-sm-8" id="modalContent">
+                    Texte
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/modal.js"></script>
+}
