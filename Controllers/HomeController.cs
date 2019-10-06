@@ -37,6 +37,11 @@ namespace technology_tp1.Controllers
             return View(this);
         }
 
+        public IActionResult Cart()
+        {
+            return View("Cart", this);
+        }
+
         public IActionResult AddItemToCart()
         {
             var form = _httpContextAccessor.HttpContext.Request.Form;
@@ -47,6 +52,18 @@ namespace technology_tp1.Controllers
             }
             HttpContext.Response.Redirect("/");
             return View("Index", this);
+        }
+
+        public IActionResult RemoveItemToCart()
+        {
+            var form = _httpContextAccessor.HttpContext.Request.Form;
+            if (int.TryParse(form[FormNameIdItem], out int id))
+            {
+                _cart.RemoveItem(id);
+                _cart.Save();
+            }
+            HttpContext.Response.Redirect("/");
+            return View("Cart", this);
         }
 
         public IActionResult Privacy()

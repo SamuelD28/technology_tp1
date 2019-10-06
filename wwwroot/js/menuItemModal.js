@@ -8,10 +8,7 @@ var span = document.getElementsByClassName("modal-close")[0];
 //var buttons = document.getElementsByClassName("modal-btn");
 $(".modal-btn").each(function (index, btn) {
     // When the user clicks the button, open the modal
-    btn = $(this);
-    var imageBase64 = btn;
-    var name = btn;
-    btn.click(function () {
+    $(this).click(function () {
         $("#myModal").css("display", "block");
         $("#myModal").find("#modalPicture").attr("style", "background-image: url('data:image/png;base64," + $(this).children("data").attr("image") + "'); background-size: cover; background-position: center");
         $("#myModal").find("#itemId").attr("value", $(this).children("data").attr("itemId"));

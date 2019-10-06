@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -18,21 +19,29 @@ namespace technology_tp1.Services
 
         private readonly IHttpContextAccessor _httpContextAccessor;
         private Dictionary<int, int> _cartItems = new Dictionary<int, int>();
+        private AppDbContext _db;
 
         /// <summary>
         /// Get the number of items in the cart
         /// </summary>
         public int CartCount => _cartItems.Count;
 
-        public CartService(IHttpContextAccessor httpContextAccessor)
+        public IEnumerable<CartItem> Items => _db.MenuItems.Where(i => _cartItems.ContainsKey(i.Id)).Include(i => i.Image).Select(i => new CartItem(i, _cartItems[i.Id]));
+
+        public CartService(IHttpContextAccessor httpContextAccessor, AppDbContext db)
         {
             _httpContextAccessor = httpContextAccessor;
+            _db = db;
             QueryCookies();
         }
 
         public void AddItem(int itemId, int quantity = 1)
         {
             _cartItems[itemId] = quantity;
+        }
+        public void RemoveItem(int id)
+        {
+            _cartItems.Remove(id);
         }
 
         public void Save()

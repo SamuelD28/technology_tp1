@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using technology_tp1.Services;
+
+@inject IViewLocalizer Localizer
+@inject ICartService Cart
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+@foreach (var item in Cart.Items)
+{
+    <div class="row menu-item">
+        <div class="col-sm-3 d-none d-md-block" style="background-image: url('data:image/png;base64,@item.MenuItem.Image.Small'); background-size: cover; background-position: center"></div>
+        <div class="col-sm-4 col-6">
+            <p class="vertical-center">@item.MenuItem.Name</p>
+        </div>
+        <div class="col-sm-4 col-6">
+            <p class="vertical-center">@String.Format("{0:C}", item.MenuItem.Price)</p>
+        </div>
+        <div class="col-sm-1 d-none d-sm-block">
+            <p class="vertical-center text-center"><i class="vertical-center fas fa-minus fa-2x remove-item-btn"></i></p>
+        </div>
+        <data class="d-none"
+              itemId="@item.MenuItem.Id"
+              name="@item.MenuItem.Name"
+              price="@item.MenuItem.Price"
+              description="Description"
+              image="@item.MenuItem.Image.Small" />
+    </div>
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/cart.js"></script>
+}
