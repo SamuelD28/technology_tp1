@@ -14,6 +14,7 @@ $(".modal-btn").each(function (index, btn) {
     btn.click(function () {
         $("#myModal").css("display", "block");
         $("#myModal").find("#modalPicture").attr("style", "background-image: url('data:image/png;base64," + $(this).children("data").attr("image") + "'); background-size: cover; background-position: center");
+        $("#myModal").find("#itemId").attr("value", $(this).children("data").attr("itemId"));
         //$("#myModal").find("#modalContent").text($(this).children("data").attr("name"));
     }
     );

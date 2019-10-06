@@ -10,19 +10,19 @@ using technology_tp1.Models;
 
 namespace technology_tp1.Services
 {
-    public class CartService
+    public class CartService : ICartService
     {
         private const string CartKey = "cart";
         // minutes
         private const int DefaultExpirationTime = 44_640;
 
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private Dictionary<int, int> cartItems = new Dictionary<int, int>();
+        private Dictionary<int, int> _cartItems = new Dictionary<int, int>();
 
         /// <summary>
         /// Get the number of items in the cart
         /// </summary>
-        public int CartCount => cartItems.Count;
+        public int CartCount => _cartItems.Count;
 
         public CartService(IHttpContextAccessor httpContextAccessor)
         {
@@ -30,18 +30,18 @@ namespace technology_tp1.Services
             QueryCookies();
         }
 
-        public void AddItem(MenuItem item, int quantity = 1)
+        public void AddItem(int itemId, int quantity = 1)
         {
-            cartItems[item.Id] = quantity;
+            _cartItems[itemId] = quantity;
         }
 
         public void Save()
         {
             StringBuilder builder = new StringBuilder();
             int count = 1;
-            foreach (var item in cartItems)
+            foreach (var item in _cartItems)
             {
-                builder.Append(item.Key).Append("-").Append(item.Value);
+                builder.Append(item.Key).Append(":").Append(item.Value);
                 if (count++ < CartCount)
                     builder.Append(",");
             }
@@ -51,10 +51,11 @@ namespace technology_tp1.Services
         private void QueryCookies()
         {
             string rawCart = Get(CartKey) ?? String.Empty;
-            Regex regex = new Regex("[0-9]+-[0-9]+");
-            foreach (string match in regex.Matches(rawCart))
+            Regex regex = new Regex("-?[0-9]+:[0-9]+");
+            foreach (Match match in regex.Matches(rawCart))
             {
-                // TODO
+                string[] values = match.Value.Split(":");
+                AddItem(Convert.ToInt32(values[0]), Convert.ToInt32(values[1]));
             }
         }
 
@@ -83,7 +84,7 @@ namespace technology_tp1.Services
     {
         public static void AddCartService(this IServiceCollection services)
         {
-            services.AddTransient<CartService>();
+            services.AddTransient<ICartService, CartService>();
         }
     }
 }
