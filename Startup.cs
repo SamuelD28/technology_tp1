@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using technology_tp1.Models;
+using technology_tp1.Services;
 
 namespace technology_tp1
 {
@@ -26,6 +27,9 @@ namespace technology_tp1
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // HttpContextAccessor
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
@@ -39,6 +43,9 @@ namespace technology_tp1
 
             // Add localization services (IStringLocalizer)
             services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            // Cart
+            services.AddCartService();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddViewLocalization();
