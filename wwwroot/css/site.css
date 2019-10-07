@@ -121,6 +121,15 @@ body {
     padding: 2rem;
 }
 
+
+/* Cart
+-------------------------------------------------- */
+.remove-item-btn:hover {
+    color: red;
+    -webkit-transition: color 0.1s; /* Safari prior 6.1 */
+    transition: color 0.1s;
+}
+
 /* Other
 -------------------------------------------------- */
 .vertical-center {
