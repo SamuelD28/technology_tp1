@@ -9,6 +9,8 @@
                     var JQItem = $(item);
                     if (JQItem.find("data").attr("itemId") == itemId) {
                         JQItem.remove();
+                        var cartNav = $("#cartNav").children('span');
+                        cartNav.text(parseInt(cartNav.text()) - 1);
                         return;
                     }
                 });
