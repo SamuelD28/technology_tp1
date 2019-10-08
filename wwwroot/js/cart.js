@@ -14,6 +14,7 @@
                             var cartNav = $("#cartNav").children('span');
                             cartNav.text(parseInt(cartNav.text()) - 1);
                         }
+                        updateMainMessage();
                         //JQItem.remove();
                         //var cartNav = $("#cartNav").children('span');
                         //cartNav.text(parseInt(cartNav.text()) - 1);
@@ -39,4 +40,14 @@ function updateItemDisplay(menuItem) {
     return false;
 }
 
+function updateMainMessage() {
+    if ($("#cartItems").children().length == 0) {
+        $("#emptyCartMessage").show();
+    }
+    else {
+        $("#emptyCartMessage").hide();
+    }
+}
+
 new CartModal();
+updateMainMessage();
