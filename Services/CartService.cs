@@ -44,6 +44,20 @@ namespace technology_tp1.Services
             _cartItems.Remove(id);
         }
 
+        public int RemoveItem(int id, int quantity)
+        {
+            if (quantity < 1)
+                return _cartItems[id];
+            _cartItems[id] -= quantity;
+            if(_cartItems[id] < 1)
+            {
+                RemoveItem(id);
+                return 0;
+            }
+
+            return _cartItems[id];
+        }
+
         public void Save()
         {
             StringBuilder builder = new StringBuilder();

@@ -15,8 +15,11 @@
         <div class="col-md-4 col-6">
             <p class="vertical-center">@item.MenuItem.Name</p>
         </div>
-        <div class="col-md-4 col-4">
+        <div class="col-md-2 col-2">
             <p class="vertical-center">@String.Format("{0:C}", item.MenuItem.Price)</p>
+        </div>
+        <div class="col-md-2 col-2">
+            <p class="vertical-center item-quantity">@item.Quantity</p>
         </div>
         <div class="col-2 col-md-1 d-none d-sm-block">
             <p class="vertical-center text-center"><i class="vertical-center fas fa-minus fa-2x remove-item-btn"></i></p>
@@ -27,7 +30,7 @@
               price="@item.MenuItem.Price"
               description="Description"
               image="@item.MenuItem.Image.Small"
-              quantity="@item.Quantity"/>
+              quantity="@item.Quantity" />
     </div>
 }
 

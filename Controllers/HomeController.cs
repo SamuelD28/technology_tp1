@@ -66,6 +66,18 @@ namespace technology_tp1.Controllers
             return View("Cart", this);
         }
 
+        public IActionResult DecreaseQuantityItem()
+        {
+            var form = _httpContextAccessor.HttpContext.Request.Form;
+            if (int.TryParse(form[FormNameIdItem], out int id) && int.TryParse(form[FormNameQuantity], out int quantity))
+            {
+                _cart.RemoveItem(id, quantity);
+                _cart.Save();
+            }
+            HttpContext.Response.Redirect("/");
+            return View("Cart", this);
+        }
+
         public IActionResult Privacy()
         {
             return View();
