@@ -2,7 +2,7 @@
     // When the user clicks the button, open the modal
     $(this).click(function (event) {
         event.stopPropagation();
-        var itemId = $(this).parents().find("data").attr("itemId")
+        var itemId = $(this).parents(".modal-btn").find("data").attr("itemId")
         $.post("/Home/RemoveItemToCart", { itemId: itemId }, function (data, status) {
             if (status == "success") {
                 $(".menu-item").each(function (index, item) {
