@@ -41,47 +41,20 @@
         </div>
     }
 </div>
+<div id="totalPrice" class="container">
+    <div class="row">
+        <h1>
+            Total&nbsp;:&nbsp;
+        </h1>
+        <h1 class="price">0.00$</h1>
+    </div>
+</div>
 
 @await Html.PartialAsync("_ItemModal", new ModalContent())
-<!-- The Modal -->
-@*<div id="myModal" class="modal">*@
-<!-- Modal content -->
-@*<div class="modal-content">
-            <div class="container-fluid h-100 d-flex flex-column">
-                <div class="row flex-row-reverse">
-                    <div class="modal-close">&times;</div>
-                </div>
-                <div class="row flex-grow-1">
-                    <div id="modalPicture" class="col-lg-4">
-                    </div>
-                    <div id="modalContent" class="col-lg-8 item-info">
-                        <p><strong>@Localizer["NameLabel"]&nbsp;:</strong>Name</p>
-                        <p><strong>@Localizer["PriceLabel"]&nbsp;:</strong>$$$</p>
-                        <p>
-                            <strong>@Localizer["DescriptionLabel"]&nbsp;:</strong>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                            id est laborum.{{}}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
+
 
 @section Scripts {
-<script type="text/javascript" src="~/js/BaseModal.js"></script>
-<script type="text/javascript" src="~/js/cartModal.js"></script>
-
+    <script type="text/javascript" src="~/js/BaseModal.js"></script>
+    <script type="text/javascript" src="~/js/cartModal.js"></script>
     <script type="text/javascript" src="~/js/cart.js"></script>
 }

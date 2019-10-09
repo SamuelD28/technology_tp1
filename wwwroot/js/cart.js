@@ -14,10 +14,8 @@
                             var cartNav = $("#cartNav").children('span');
                             cartNav.text(parseInt(cartNav.text()) - 1);
                         }
-                        updateMainMessage();
-                        //JQItem.remove();
-                        //var cartNav = $("#cartNav").children('span');
-                        //cartNav.text(parseInt(cartNav.text()) - 1);
+                        updateMainMessageDisplay();
+                        updatePriceDisplay();
                         return;
                     }
                 });
@@ -40,7 +38,7 @@ function updateItemDisplay(menuItem) {
     return false;
 }
 
-function updateMainMessage() {
+function updateMainMessageDisplay() {
     if ($("#cartItems").children().length == 0) {
         $("#emptyCartMessage").show();
     }
@@ -49,5 +47,19 @@ function updateMainMessage() {
     }
 }
 
+function updatePriceDisplay() {
+    if ($("#cartItems").children().length == 0) {
+        $("#totalPrice").hide();
+        return;
+    }
+    $("#totalPrice").show();
+    var price = 0;
+    $(".menu-item").each(function (index, item) {
+        price += parseFloat($(this).find("data").attr("price")) * parseInt($(this).find("data").attr("quantity"));
+    });
+    $("#totalPrice").find(".price").text(price.toFixed(2) + "$");
+}
+
 new CartModal();
-updateMainMessage();
+updateMainMessageDisplay();
+updatePriceDisplay();
