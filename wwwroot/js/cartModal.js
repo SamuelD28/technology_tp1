@@ -18,5 +18,7 @@
     }
 
     closeFun = function (sender) {
+        $("#quantity").val(1);
     }
 }
+new MenuItemModal();

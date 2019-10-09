@@ -23,7 +23,7 @@
 
 
   <ItemGroup>
-    <None Include="wwwroot\js\menuItemModal.js" />
+    <None Include="wwwroot\js\cartModal.js" />
   </ItemGroup>
 
 </Project>

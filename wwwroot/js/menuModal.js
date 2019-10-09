@@ -1,4 +1,4 @@
-﻿class MenuItemModal extends Modal {
+﻿class MenuModal extends Modal {
     openFun = function () {
         $("#myModal").find("#modalPicture").attr("style", "background-image: url('data:image/png;base64," + $(this).children("data").attr("image") + "'); background-size: cover; background-position: center");
         $("#myModal").find("#itemId").attr("value", $(this).children("data").attr("itemId"));
@@ -18,7 +18,5 @@
     }
 
     closeFun = function (sender) {
-        $("#quantity").val(1);
     }
 }
-new MenuItemModal();
