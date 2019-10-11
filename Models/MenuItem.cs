@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace technology_tp1.Models
 {
+    public enum Category { Pizza, Drink, Dessert, Other }
+
     public class MenuItem
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,5 +24,7 @@ namespace technology_tp1.Models
         public int ImageId { get; set; }
 
         public ItemImage Image { get; set; }
+
+        public Category Category { get; set; }
     }
 }
