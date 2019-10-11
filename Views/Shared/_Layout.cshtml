@@ -112,9 +112,6 @@
     <link rel="stylesheet" href="~/fonts/beyond_the_mountains-webfont.css" type="text/css" />
 
     <!-- Stylesheets -->
-    <link href="~/lib/swiper/swiper.css" rel="stylesheet">
-    <link href="~/fonts/ionicons.css" rel="stylesheet">
-    <link href="~/css/template/styles.css" rel="stylesheet">
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
@@ -125,6 +122,10 @@
               crossorigin="anonymous"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
+    <link href="~/lib/swiper/swiper.css" rel="stylesheet">
+    <link href="~/fonts/ionicons.css" rel="stylesheet">
+    <link href="~/css/template/styles.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -150,12 +151,8 @@
         </div><!-- container -->
     </header>
 
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
             @RenderBody()
-        </main>
-    </div>
+
     <section class="bg-1 h-900x main-slider pos-relative">
         <div class="triangle-up pos-bottom"></div>
         <div class="container h-100">
@@ -475,6 +472,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="~/lib/swiper/swiper.js"></script>
     <script src="~/js/template/template.js"></script>
+    <partial name="_CookieConsentPartial"/>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

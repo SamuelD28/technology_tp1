@@ -11,18 +11,12 @@
 
 @if (showBanner)
 {
-    <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
-        @Localizer["CookieMessage"] <a asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["CookieLearnMore"]</a>.
-        <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-            <span aria-hidden="true">@Localizer["CookieAccept"]</span>
-        </button>
-    </div>
     <script>
-        (function () {
-            var button = document.querySelector("#cookieConsent button[data-cookie-string]");
-            button.addEventListener("click", function (event) {
-                document.cookie = button.dataset.cookieString;
-            }, false);
-        })();
+        $(function () {
+            if (confirm("@Localizer["CookieMessage"]")) {
+                document.cookie = "@cookieString";
+            }
+        });
     </script>
 }
+

@@ -117,13 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CookieAccept" xml:space="preserve">
-    <value>Accept</value>
-  </data>
-  <data name="CookieLearnMore" xml:space="preserve">
-    <value>Learn more</value>
-  </data>
   <data name="CookieMessage" xml:space="preserve">
-    <value>Use this space to summarize your privacy and cookie use policy.</value>
+    <value>We need to use your cookies to enhance your exprience.</value>
   </data>
 </root>
