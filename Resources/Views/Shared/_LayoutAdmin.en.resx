@@ -117,13 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="NavClientPageTitle" xml:space="preserve">
+    <value>Client's section</value>
+  </data>
+  <data name="NavDeliveryManTitle" xml:space="preserve">
+    <value>Delivery Man</value>
+  </data>
   <data name="NavHomeTitle" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="NavPrivacyTitle" xml:space="preserve">
-    <value>Privacy</value>
+  <data name="NavImagesTitle" xml:space="preserve">
+    <value>Images</value>
   </data>
-  <data name="SeeMenu" xml:space="preserve">
-    <value>See Menu</value>
+  <data name="NavMenuItemsTitle" xml:space="preserve">
+    <value>Menu Items</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>TP1</value>
   </data>
 </root>
