@@ -45,7 +45,7 @@ namespace technology_tp1
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             // Cart
-            services.AddCartService();
+            services.AddCartServiceCookie();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddViewLocalization();

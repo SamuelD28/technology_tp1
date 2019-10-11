@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using technology_tp1.Models;
 
 namespace technology_tp1.Services
@@ -14,17 +12,21 @@ namespace technology_tp1.Services
     public class CartService : ICartService
     {
         private const string CartKey = "cart";
+
         // minutes
         private const int DefaultExpirationTime = 44_640;
 
         private readonly IHttpContextAccessor _httpContextAccessor;
+
+        // Id : Quantity
         private Dictionary<int, int> _cartItems = new Dictionary<int, int>();
         private AppDbContext _db;
 
         /// <summary>
         /// Get the number of items in the cart
         /// </summary>
-        public int CartCount => _cartItems.Count;
+        public int CartCountDistinctItem => _cartItems.Count;
+        public int CartCount => _cartItems.Sum(i => i.Value);
 
         public IEnumerable<CartItem> Items => _db.MenuItems.Where(i => _cartItems.ContainsKey(i.Id)).Include(i => i.Image).Select(i => new CartItem(i, _cartItems[i.Id]));
 
@@ -65,7 +67,7 @@ namespace technology_tp1.Services
             foreach (var item in _cartItems)
             {
                 builder.Append(item.Key).Append(":").Append(item.Value);
-                if (count++ < CartCount)
+                if (count++ < CartCountDistinctItem)
                     builder.Append(",");
             }
             Set(CartKey, builder.ToString(), DefaultExpirationTime);
@@ -100,14 +102,6 @@ namespace technology_tp1.Services
         private void Remove(string key)
         {
             _httpContextAccessor.HttpContext.Response.Cookies.Delete(key);
-        }
-    }
-
-    static class CartServiceExt
-    {
-        public static void AddCartService(this IServiceCollection services)
-        {
-            services.AddTransient<ICartService, CartService>();
         }
     }
 }

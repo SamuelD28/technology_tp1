@@ -9,13 +9,13 @@
                     var JQItem = $(item);
                     var JQData = JQItem.find("data");
                     if (JQData.attr("itemId") == itemId) {
+                        let cart = JSON.parse(data);
                         updateItemQuantity(JQItem, parseInt(JQData.attr("quantity")) - 1);
-                        if (updateItemDisplay(JQItem)) {
-                            var cartNav = $("#cartNav").children('span');
-                            cartNav.text(parseInt(cartNav.text()) - 1);
-                        }
+                        updateItemDisplay(JQItem)
+                        var cartNav = $("#cartNav").children('span');
+                        cartNav.text(cart["itemCount"]);
                         updateMainMessageDisplay();
-                        updatePriceDisplay();
+                        updatePriceDisplay(cart["totalPrice"]);
                         return;
                     }
                 });
@@ -47,16 +47,12 @@ function updateMainMessageDisplay() {
     }
 }
 
-function updatePriceDisplay() {
+function updatePriceDisplay(price) {
     if ($("#cartItems").children().length == 0) {
         $("#totalPrice").hide();
         return;
     }
     $("#totalPrice").show();
-    var price = 0;
-    $(".menu-item").each(function (index, item) {
-        price += parseFloat($(this).find("data").attr("price")) * parseInt($(this).find("data").attr("quantity"));
-    });
     $("#totalPrice").find(".price").text(price.toFixed(2) + "$");
 }
 

@@ -54,7 +54,7 @@ namespace technology_tp1.Controllers
             return View("Index", this);
         }
 
-        public IActionResult RemoveItemToCart()
+        public JsonResult RemoveItemToCart()
         {
             var form = _httpContextAccessor.HttpContext.Request.Form;
             if (int.TryParse(form[FormNameIdItem], out int id))
@@ -63,10 +63,10 @@ namespace technology_tp1.Controllers
                 _cart.Save();
             }
             HttpContext.Response.Redirect("/");
-            return View("Cart", this);
+            return new JsonResult (_cart.ToJson().ToString());
         }
 
-        public IActionResult DecreaseQuantityItem()
+        public JsonResult DecreaseQuantityItem()
         {
             var form = _httpContextAccessor.HttpContext.Request.Form;
             if (int.TryParse(form[FormNameIdItem], out int id) && int.TryParse(form[FormNameQuantity], out int quantity))
@@ -75,7 +75,10 @@ namespace technology_tp1.Controllers
                 _cart.Save();
             }
             HttpContext.Response.Redirect("/");
-            return View("Cart", this);
+            var result = new JsonResult(_cart.ToJson().ToString());
+            result.StatusCode = 200;
+            result.ContentType = "json";
+            return result;
         }
 
         public IActionResult Privacy()
