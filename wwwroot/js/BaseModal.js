@@ -18,7 +18,7 @@
         });
 
         window.onclick = function (event) {
-            if (event.target == $("#myModal")[0]) {
+            if (event.target == $(modal.modalId)[0]) {
                 modal.exitModal();
             }
         }
@@ -33,12 +33,12 @@
     }
 
     openModal(sender) {
-        $("#myModal").css("display", "block");
+        $(this.modalId).css("display", "block");
         this.onOpenning(sender);
     }
 
     exitModal() {
-        $("#myModal").css("display", "none");
+        $(this.modalId).css("display", "none");
         this.onClosing();
     }
 }

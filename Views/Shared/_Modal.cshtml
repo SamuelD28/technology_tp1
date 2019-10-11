@@ -1,0 +1,18 @@
+﻿@model technology_tp1.Models.ModalContent
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="container-fluid h-100 d-flex flex-column">
+            <div class="row flex-row-reverse">
+                <div class="modal-close">&times;</div>
+            </div>
+            <div class="row flex-grow-1">
+                @Model.Content
+            </div>
+        </div>
+    </div>
+</div>

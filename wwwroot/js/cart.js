@@ -1,8 +1,9 @@
-﻿$(".remove-item-btn").each(function (index, btn) {
+﻿// Remove one item
+$(".remove-item-btn").each(function (index, btn) {
     // When the user clicks the button, open the modal
     $(this).click(function (event) {
         event.stopPropagation();
-        var itemId = $(this).parents(".modal-btn").find("data").attr("itemId")
+        var itemId = $(this).parents(".menu-item").find("data").attr("itemId")
         $.post("/Home/DecreaseQuantityItem", { itemId: itemId, quantity: 1 }, function (data, status) {
             if (status == "success") {
                 $(".menu-item").each(function (index, item) {
@@ -10,12 +11,37 @@
                     var JQData = JQItem.find("data");
                     if (JQData.attr("itemId") == itemId) {
                         let cart = JSON.parse(data);
+                        updateCartCount(cart["itemCount"]);
                         updateItemQuantity(JQItem, parseInt(JQData.attr("quantity")) - 1);
+                        updateItemDisplay(JQItem)
+                        updateMainMessageDisplay();
+                        updateTotalPriceDisplay(cart["totalPrice"]);
+                        return;
+                    }
+                });
+            }
+        });
+    });
+});
+
+$(".remove-all-item-btn").each(function (index, btn) {
+    // When the user clicks the button, open the modal
+    $(this).click(function (event) {
+        event.stopPropagation();
+        var itemId = $(this).parents(".menu-item").find("data").attr("itemId")
+        $.post("/Home/RemoveItemToCart", { itemId: itemId }, function (data, status) {
+            if (status == "success") {
+                $(".menu-item").each(function (index, item) {
+                    var JQItem = $(item);
+                    var JQData = JQItem.find("data");
+                    if (JQData.attr("itemId") == itemId) {
+                        let cart = JSON.parse(data);
+                        updateItemQuantity(JQItem, 0);
                         updateItemDisplay(JQItem)
                         var cartNav = $("#cartNav").children('span');
                         cartNav.text(cart["itemCount"]);
                         updateMainMessageDisplay();
-                        updatePriceDisplay(cart["totalPrice"]);
+                        updateTotalPriceDisplay(cart["totalPrice"]);
                         return;
                     }
                 });
@@ -40,14 +66,16 @@ function updateItemDisplay(menuItem) {
 
 function updateMainMessageDisplay() {
     if ($("#cartItems").children().length == 0) {
-        $("#emptyCartMessage").show();
+        $("#CartEmpty").show();
+        $("#CartNotEmpty").hide();
     }
     else {
-        $("#emptyCartMessage").hide();
+        $("#CartEmpty").hide();
+        $("#CartNotEmpty").show();
     }
 }
 
-function updatePriceDisplay(price) {
+function updateTotalPriceDisplay(price) {
     if ($("#cartItems").children().length == 0) {
         $("#totalPrice").hide();
         return;
@@ -58,4 +86,8 @@ function updatePriceDisplay(price) {
 
 new CartModal();
 updateMainMessageDisplay();
-updatePriceDisplay();
+$.post("/Home/CartJson", function (data, status) {
+    if (status == "success") {
+        updateTotalPriceDisplay(JSON.parse(data)["totalPrice"]);
+    }
+});

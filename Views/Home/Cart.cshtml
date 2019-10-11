@@ -1,6 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using technology_tp1.Services;
-@using System.Web;
 
 
 @inject IViewLocalizer Localizer
@@ -9,49 +8,84 @@
 @{
     ViewData["Title"] = "Cart";
 }
-<div id="emptyCartMessage" class="container">
-    <div class="row">
-        <h1>@Localizer["EmptyCartMessage"]</h1>
-    </div>
+<div id="cart" class="heading">
+    <h2 id="CartEmpty">@Localizer["EmptyCartMessage"]</h2>
+    <h2 id="CartNotEmpty">@Localizer["NotEmptyCartMessage"]</h2>
 </div>
-<div class="container" id="cartItems">
+
+<h1 class="active" data-select="*"></h1>
+<div id="cartItems" class="row">
     @foreach (var item in Cart.Items)
     {
-        <div class="row menu-item modal-btn">
-            <div class="col-sm-3 d-none d-md-block" style="background-image: url('data:image/png;base64,@item.MenuItem.Image.Small'); background-size: cover; background-position: center"></div>
-            <div class="col-md-4 col-6">
-                <p class="vertical-center">@item.MenuItem.Name</p>
+        <div class="container menu-item">
+            <div class="row food-menu active">
+                <div class="sided-90x mb-30 ">
+                    <div class="s-left"><img class="br-3" src="data:image/png;base64,@item.MenuItem.Image.Small" alt="Menu Image"></div><!--s-left-->
+                    <div class="s-right">
+                        <h5 class="mb-10">
+                            <b>@item.MenuItem.Name</b>
+                            <b class="color-primary float-right">
+                                @String.Format("{0:C}", item.MenuItem.Price)
+                                <br />
+                                (<span class="item-quantity">@item.Quantity</span>)
+                            </b>
+                        </h5>
+                        <p class="pr-70">Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea dictumst. </p>
+                    </div><!--s-right-->
+                </div><!-- sided-90x -->
+                <data class="d-none"
+                      itemId="@item.MenuItem.Id"
+                      name="@item.MenuItem.Name"
+                      price="@item.MenuItem.Price"
+                      description="Description"
+                      image="@item.MenuItem.Image.Small"
+                      quantity="@item.Quantity" />
+            </div><!-- food-menu -->
+            <div class="d-flex">
+                <div class="col-sm-6 d-flex flex-row-reverse">
+                    <button class="plr-10 btn-fill-primary remove-item-btn">@Localizer["BtnRemoveOne"]</button>
+                </div>
+                <div class="col-sm-6">
+                    <button class="plr-10 btn-fill-primary remove-all-item-btn">@Localizer["BtnRemoveAll"]</button>
+                </div>
             </div>
-            <div class="col-md-2 col-2">
-                <p class="vertical-center">@String.Format("{0:C}", item.MenuItem.Price)</p>
-            </div>
-            <div class="col-md-2 col-2">
-                <p class="vertical-center item-quantity">@item.Quantity</p>
-            </div>
-            <div class="col-2 col-md-1 d-none d-sm-block">
-                <p class="vertical-center text-center"><i class="vertical-center fas fa-minus fa-2x remove-item-btn"></i></p>
-            </div>
-            <data class="d-none"
-                  itemId="@item.MenuItem.Id"
-                  name="@item.MenuItem.Name"
-                  price="@item.MenuItem.Price"
-                  description="Description"
-                  image="@item.MenuItem.Image.Small"
-                  quantity="@item.Quantity" />
-        </div>
+        </div><!-- container -->
     }
-</div>
-<div id="totalPrice" class="container">
-    <div class="row">
-        <h1>
-            Total&nbsp;:&nbsp;
-        </h1>
-        <h1 class="price">0.00$</h1>
-    </div>
-</div>
+    @*@foreach (var item in Cart.Items)
+        {
+            <div class="row menu-item modal-btn">
+                <div class="col-sm-3 d-none d-md-block" style="background-image: url('data:image/png;base64,@item.MenuItem.Image.Small'); background-size: cover; background-position: center"></div>
+                <div class="col-md-4 col-6">
+                    <p class="vertical-center">@item.MenuItem.Name</p>
+                </div>
+                <div class="col-md-2 col-2">
+                    <p class="vertical-center">@String.Format("{0:C}", item.MenuItem.Price)</p>
+                </div>
+                <div class="col-md-2 col-2">
+                    <p class="vertical-center item-quantity">@item.Quantity</p>
+                </div>
+                <div class="col-2 col-md-1 d-none d-sm-block">
+                    <p class="vertical-center text-center"><i class="vertical-center fas fa-minus fa-2x remove-item-btn"></i></p>
+                </div>
+                <data class="d-none"
+                      itemId="@item.MenuItem.Id"
+                      name="@item.MenuItem.Name"
+                      price="@item.MenuItem.Price"
+                      description="Description"
+                      image="@item.MenuItem.Image.Small"
+                      quantity="@item.Quantity" />
+            </div>
+        }*@
 
-@await Html.PartialAsync("_ItemModal", new ModalContent())
+    @*@await Html.PartialAsync("_ItemModal", new ModalContent())*@
 
+</div><!-- row -->
+
+<div id="totalPrice" class="heading">
+    <h1>
+        Total&nbsp;:&nbsp;<span class="price">0.00$</span>
+    </h1>
+</div>
 
 @section Scripts {
     <script type="text/javascript" src="~/js/BaseModal.js"></script>
