@@ -135,4 +135,7 @@
   <data name="ProjectName" xml:space="preserve">
     <value>TP1</value>
   </data>
+  <data name="SeeMenu" xml:space="preserve">
+    <value>See Menu</value>
+  </data>
 </root>
