@@ -4,100 +4,100 @@
 @inject IViewLocalizer Localizer
 @inject ICartService Cart
 @*<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - technology_tp1</title>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - technology_tp1</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
-    </environment>
-    <link rel="stylesheet" href="~/CSS/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["ProjectName"]</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav navbar-right">
-                        <li>
-                            <a id="cartNav" asp-controller="Home" asp-action="Cart">
-                                <i class="fas fa-shopping-cart fa-2x shop-cart"></i>
-                                <span>@Cart.CartCount</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["NavHomeTitle"]</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["NavPrivacyTitle"]</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="DeliveryMen" asp-action="Index">@Localizer["NavDeliveryManTitle"]</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="MenuItems" asp-action="Index">@Localizer["NavMenuItemsTitle"]</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Images" asp-action="Index">@Localizer["NavImagesTitle"]</a>
-                        </li>
-                    </ul>
+        <environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+                  crossorigin="anonymous"
+                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+        </environment>
+        <link rel="stylesheet" href="~/CSS/site.css" />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["ProjectName"]</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav navbar-right">
+                            <li>
+                                <a id="cartNav" asp-controller="Home" asp-action="Cart">
+                                    <i class="fas fa-shopping-cart fa-2x shop-cart"></i>
+                                    <span>@Cart.CartCount</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["NavHomeTitle"]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["NavPrivacyTitle"]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="DeliveryMen" asp-action="Index">@Localizer["NavDeliveryManTitle"]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MenuItems" asp-action="Index">@Localizer["NavMenuItemsTitle"]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Images" asp-action="Index">@Localizer["NavImagesTitle"]</a>
+                            </li>
+                        </ul>
 
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+            </nav>
+        </header>
         <div class="container">
-            &copy; 2019 - technology_tp1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <partial name="_CookieConsentPartial" />
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
-    </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    @RenderSection("Scripts", required: false)
-</body>
-</html>*@
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2019 - technology_tp1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+            </script>
+        </environment>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        @RenderSection("Scripts", required: false)
+    </body>
+    </html>*@
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -147,8 +147,6 @@
         </div><!-- container -->
     </header>
 
-            @RenderBody()
-
     <section class="bg-1 h-900x main-slider pos-relative">
         <div class="triangle-up pos-bottom"></div>
         <div class="container h-100">
@@ -167,142 +165,15 @@
         <div class="abs-tbl bg-2 w-20 z--1 dplay-md-none"></div>
         <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
         <div class="container">
-            <div class="heading">
-                <img class="heading-img" src="images/heading_logo.png" alt="">
-                <h2>Our Story</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="mb-30">
-                        Maecenas fermentum tortor id fringilla molestie. In hac habitasse
-                        platea dictumst. Morbi maximus
-                        lobortis ipsum, ut blandit augue ullamcorper vitae.
-                        Nulla dignissim leo felis, eget cursus elit aliquet ut. Curabitur vel convallis
-                        massa. Morbi tellus
-                        tortor, luctus et lacinia non, tincidunt in lacus.
-                        Vivamus sed ligula imperdiet, feugiat magna vitae, blandit ex. Vestibulum id
-                        dapibus dolor, ac
-                        cursus nulla.
-                    </p>
-                </div><!-- col-md-6 -->
-
-                <div class="col-md-6">
-                    <p class="mb-30">
-                        Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea
-                        dictumst.Morbi maximus lobortis ipsum, ut blandit augue ullamcorper vitae.
-                        Nulla dignissim leo felis, eget cursus elit aliquet ut. Curabitur vel
-                        convallismassa. Morbi tellus tortor, luctus et lacinia non, tincidunt in lacus.
-                        Vivamus sed ligula imperdiet, feugiat magna vitae, blandit ex. Vestibulumidda
-                        pibus dolor, accursus nulla.
-                    </p>
-                </div><!-- col-md-6 -->
-            </div><!-- row -->
+            @RenderBody()
         </div><!-- container -->
     </section>
 
 
-    <section class="story-area bg-seller color-white pos-relative">
-        <div class="pos-bottom triangle-up"></div>
-        <div class="pos-top triangle-bottom"></div>
-        <div class="container">
-            <div class="heading">
-                <img class="heading-img" src="images/heading_logo.png" alt="">
-                <h2>Best Sellers</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-4  col-sm-6 ">
-                    <div class="center-text mb-30">
-                        <div class="ïmg-200x mlr-auto pos-relative">
-                            <h6 class="ribbon-cont"><div class="ribbon primary"></div><b>OFFER</b></h6>
-                            <img src="images/seller-2-200x200.png" alt="">
-                        </div>
-                        <h5 class="mt-20">Pizza Margherita</h5>
-                        <h4 class="mt-5"><b>$11.90</b></h4>
-                        <h6 class="mt-20"><a href="#" class="btn-brdr-primary plr-25"><b>Order Now</b></a></h6>
-                    </div><!--text-center-->
-                </div><!-- col-md-3 -->
-
-                <div class="col-lg-3 col-md-4  col-sm-6 ">
-                    <div class="center-text mb-30">
-                        <div class="ïmg-200x mlr-auto pos-relative"><img src="images/seller-2-200x200.png" alt=""></div>
-                        <h5 class="mt-20">Pizza Margherita</h5>
-                        <h4 class="mt-5"><b>$11.90</b></h4>
-                        <h6 class="mt-20"><a href="#" class="btn-brdr-primary plr-25"><b>Order Now</b></a></h6>
-                    </div><!--text-center-->
-                </div><!-- col-md-3 -->
-
-                <div class="col-lg-3 col-md-4  col-sm-6 ">
-                    <div class="center-text mb-30">
-                        <div class="ïmg-200x mlr-auto pos-relative"><img src="images/seller-2-200x200.png" alt=""></div>
-                        <h5 class="mt-20">Pizza Margherita</h5>
-                        <h4 class="mt-5"><b>$11.90</b></h4>
-                        <h6 class="mt-20"><a href="#" class="btn-brdr-primary plr-25"><b>Order Now</b></a></h6>
-                    </div><!--text-center-->
-                </div><!-- col-md-3 -->
-
-                <div class="col-lg-3 col-md-4  col-sm-6 ">
-                    <div class="center-text mb-30">
-                        <div class="ïmg-200x mlr-auto pos-relative">
-                            <h6 class="ribbon-cont"><div class="ribbon secondary"></div><b>SPECIALITY</b></h6>
-                            <img src="images/seller-2-200x200.png" alt="">
-                        </div>
-                        <h5 class="mt-20">Pizza Margherita</h5>
-                        <h4 class="mt-5"><b>$11.90</b></h4>
-                        <h6 class="mt-20"><a href="#" class="btn-brdr-primary plr-25"><b>Order Now</b></a></h6>
-                    </div><!--text-center-->
-                </div><!-- col-md-3 -->
-
-                <div class="col-lg-3 col-md-4  col-sm-6 ">
-                    <div class="center-text mb-30">
-                        <div class="ïmg-200x mlr-auto pos-relative"><img src="images/seller-2-200x200.png" alt=""></div>
-                        <h5 class="mt-20">Pizza Margherita</h5>
-                        <h4 class="mt-5"><b>$11.90</b></h4>
-                        <h6 class="mt-20"><a href="#" class="btn-brdr-primary plr-25"><b>Order Now</b></a></h6>
-                    </div><!--text-center-->
-                </div><!-- col-md-3 -->
-
-                <div class="col-lg-3 col-md-4  col-sm-6 ">
-                    <div class="center-text mb-30">
-                        <div class="ïmg-200x mlr-auto pos-relative">
-                            <h6 class="ribbon-cont"><div class="ribbon primary"></div><b>OFFER</b></h6>
-                            <img src="images/seller-2-200x200.png" alt="">
-                        </div>
-                        <h5 class="mt-20">Pizza Margherita</h5>
-                        <h4 class="mt-5"><b>$11.90</b></h4>
-                        <h6 class="mt-20"><a href="#" class="btn-brdr-primary plr-25"><b>Order Now</b></a></h6>
-                    </div><!--text-center-->
-                </div><!-- col-md-3 -->
-
-                <div class="col-lg-3 col-md-4  col-sm-6 ">
-                    <div class="center-text mb-30">
-                        <div class="ïmg-200x mlr-auto pos-relative">
-                            <h6 class="ribbon-cont color-black"><div class="ribbon white"></div><b>PLUS SIZE</b></h6>
-                            <img src="images/seller-2-200x200.png" alt="">
-                        </div>
-                        <h5 class="mt-20">Pizza Margherita</h5>
-                        <h4 class="mt-5"><b>$11.90</b></h4>
-                        <h6 class="mt-20"><a href="#" class="btn-brdr-primary plr-25"><b>Order Now</b></a></h6>
-                    </div><!--text-center-->
-                </div><!-- col-md-3 -->
-
-                <div class="col-lg-3 col-md-4  col-sm-6 ">
-                    <div class="center-text mb-30">
-                        <div class="ïmg-200x mlr-auto pos-relative"><img src="images/seller-2-200x200.png" alt=""></div>
-                        <h5 class="mt-20">Pizza Margherita</h5>
-                        <h4 class="mt-5"><b>$11.90</b></h4>
-                        <h6 class="mt-20"><a href="#" class="btn-brdr-primary plr-25"><b>Order Now</b></a></h6>
-                    </div><!--text-center-->
-                </div><!-- col-md-3 -->
-            </div><!-- row -->
-
-            <h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="#" class="btn-primaryc plr-25"><b>SEE TODAYS MENU</b></a></h6>
-        </div><!-- container -->
-    </section>
+   
 
 
-    <section>
+    @*<section>
         <div class="container">
             <div class="heading">
                 <img class="heading-img" src="images/heading_logo.png" alt="">
@@ -404,7 +275,7 @@
 
             <h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="#" class="btn-primaryc plr-25"><b>SEE TODAYS MENU</b></a></h6>
         </div><!-- container -->
-    </section>
+    </section>*@
 
     <footer class="pb-50  pt-70 pos-relative">
         <div class="pos-top triangle-bottom"></div>
@@ -467,7 +338,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="~/lib/swiper/swiper.js"></script>
     <script src="~/js/template/template.js"></script>
-    <partial name="_CookieConsentPartial"/>
+    <partial name="_CookieConsentPartial" />
     @RenderSection("Scripts", required: false)
 </body>
 </html>
