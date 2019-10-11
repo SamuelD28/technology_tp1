@@ -5,6 +5,10 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="Styles\template\styles.scss" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Faker" Version="1.2.0" />
@@ -19,6 +23,7 @@
   <ItemGroup>
     <Folder Include="General\" />
     <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\css\template\" />
   </ItemGroup>
 
 
