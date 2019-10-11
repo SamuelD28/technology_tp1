@@ -6,56 +6,56 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">@ViewData["welcome"]</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-@foreach (var item in Model.MenuItems)
-{
-    <div class="row modal-btn menu-item">
-        <div class="col-sm-3 d-none d-md-block" style="background-image: url('data:image/png;base64,@item.Image.Small'); background-size: cover; background-position: center"></div>
-        <div class="col-md-4 col-6">
-            <p class="vertical-center">@item.Name</p>
-        </div>
-        <div class="col-md-4 col-4">
-            <p class="vertical-center">@String.Format("{0:C}", item.Price)</p>
-        </div>
-        <div class="col-2 col-md-1 d-none d-sm-block">
-            <p class="vertical-center text-center"><i class="vertical-center fas fa-plus fa-2x"></i></p>
-        </div>
-        <data class="d-none"
-              itemId="@item.Id"
-              name="@item.Name"
-              price="@item.Price"
-              description="Description"
-              image="@item.Image.Small" />
+@*<div class="text-center">
+        <h1 class="display-4">@ViewData["welcome"]</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     </div>
-}
 
-@{
-    ModalContent modalContent = new ModalContent();
-    modalContent.SetContentFromRazor(
-    @<form action="Home/AddItemToCart" method="post" class="container">
-        <div class="d-flex flex-row-reverse">
-            <input type="hidden" id="@HomeController.FormNameIdItem" name="@HomeController.FormNameIdItem">
-            <div class="form-group col-3">
-                <label for="@HomeController.FormNameQuantity">@Localizer["QuantityLabel"]</label>
-                <input type="number" class="form-control" id="@HomeController.FormNameQuantity" name="@HomeController.FormNameQuantity" value="1" min="1">
+    @foreach (var item in Model.MenuItems)
+    {
+        <div class="row modal-btn menu-item">
+            <div class="col-sm-3 d-none d-md-block" style="background-image: url('data:image/png;base64,@item.Image.Small'); background-size: cover; background-position: center"></div>
+            <div class="col-md-4 col-6">
+                <p class="vertical-center">@item.Name</p>
             </div>
+            <div class="col-md-4 col-4">
+                <p class="vertical-center">@String.Format("{0:C}", item.Price)</p>
+            </div>
+            <div class="col-2 col-md-1 d-none d-sm-block">
+                <p class="vertical-center text-center"><i class="vertical-center fas fa-plus fa-2x"></i></p>
+            </div>
+            <data class="d-none"
+                  itemId="@item.Id"
+                  name="@item.Name"
+                  price="@item.Price"
+                  description="Description"
+                  image="@item.Image.Small" />
         </div>
-        <div class="d-flex">
-            <button type="submit" class="btn btn-primary col-12">@Localizer["AddItemBtn"]</button>
-        </div>
-    </form>);
-}
+    }
 
-@await Html.PartialAsync("_ItemModal", modalContent)
+    @{
+        ModalContent modalContent = new ModalContent();
+        modalContent.SetContentFromRazor(
+        @<form action="Home/AddItemToCart" method="post" class="container">
+            <div class="d-flex flex-row-reverse">
+                <input type="hidden" id="@HomeController.FormNameIdItem" name="@HomeController.FormNameIdItem">
+                <div class="form-group col-3">
+                    <label for="@HomeController.FormNameQuantity">@Localizer["QuantityLabel"]</label>
+                    <input type="number" class="form-control" id="@HomeController.FormNameQuantity" name="@HomeController.FormNameQuantity" value="1" min="1">
+                </div>
+            </div>
+            <div class="d-flex">
+                <button type="submit" class="btn btn-primary col-12">@Localizer["AddItemBtn"]</button>
+            </div>
+        </form>);
+    }
 
-@section Scripts {
-    <script type="text/javascript" src="~/js/BaseModal.js"></script>
-    <script type="text/javascript" src="~/js/menuModal.js"></script>
-    <script type="text/javascript">
-        new MenuModal();
-    </script>
-}
+    @await Html.PartialAsync("_ItemModal", modalContent)
+
+    @section Scripts {
+        <script type="text/javascript" src="~/js/BaseModal.js"></script>
+        <script type="text/javascript" src="~/js/menuModal.js"></script>
+        <script type="text/javascript">
+            new MenuModal();
+        </script>
+    }*@
