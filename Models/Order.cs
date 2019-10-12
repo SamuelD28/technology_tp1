@@ -13,7 +13,7 @@ namespace technology_tp1.Models
         public int Id { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
-        public DateTime DeliveredAt { get; set; }
+        public DateTime? DeliveredAt { get; set; }
         [Required]
         public string CustomerName { get; set; }
         [Required]

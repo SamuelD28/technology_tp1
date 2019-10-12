@@ -23,6 +23,8 @@ namespace technology_tp1.Services
         /// <returns>The remaining quantity</returns>
         int RemoveItem(int id, int quantity);
 
+        int Clear();
+
         void Save();
     }
 }

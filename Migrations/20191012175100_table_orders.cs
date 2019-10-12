@@ -15,7 +15,7 @@ namespace technology_tp1.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
-                    DeliveredAt = table.Column<DateTime>(nullable: false),
+                    DeliveredAt = table.Column<DateTime>(nullable: true),
                     CustomerName = table.Column<string>(nullable: false),
                     CustomerAdress = table.Column<string>(nullable: false),
                     CustomerPhoneNumber = table.Column<string>(nullable: false)

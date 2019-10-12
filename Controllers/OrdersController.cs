@@ -8,17 +8,22 @@ using Microsoft.EntityFrameworkCore;
 using technology_tp1.Extension;
 using technology_tp1.Models;
 using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Http;
+using technology_tp1.Services;
 
 namespace technology_tp1.Controllers
 {
     public class OrdersController : Controller
     {
+        private readonly ICartService _cart;
         private readonly AppDbContext _context;
+        private readonly HttpContext _httpContext;
 
-
-        public OrdersController(AppDbContext context)
+        public OrdersController(AppDbContext context, IHttpContextAccessor httpContextAccessor, ICartService cart)
         {
+            _cart = cart;
             _context = context;
+            _httpContext = httpContextAccessor.HttpContext;
         }
 
         // GET: Commandes
@@ -63,15 +68,19 @@ namespace technology_tp1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Order commande)
+        public async Task<IActionResult> Create(Order order)
         {
+            order.CreatedAt = DateTime.Now;
+            order.OrdersItems = _cart.Items.Select(i => new OrdersItems() { MenuItem = i.MenuItem, Quantity = i.Quantity, Order = order }).ToArray();
             if (ModelState.IsValid)
             {
-                _context.Add(commande);
+                _context.Add(order);
                 await _context.SaveChangesAsync();
+                _cart.Clear();
+                _cart.Save();
                 return RedirectToAction(nameof(Index));
             }
-            return View(commande);
+            return View(order);
         }
 
         // GET: Commandes/Edit/5

@@ -60,6 +60,13 @@ namespace technology_tp1.Services
             return _cartItems[id];
         }
 
+        public int Clear()
+        {
+            int count = CartCountDistinctItem;
+            _cartItems.Clear();
+            return count;
+        }
+
         public void Save()
         {
             StringBuilder builder = new StringBuilder();
