@@ -48,6 +48,9 @@ namespace technology_tp1.Controllers
 
             var commande = await _context.Orders
                 .Include(c => c.OrdersItems)
+                .ThenInclude(o => o.Order)
+                .Include(c => c.OrdersItems).
+                ThenInclude(o => o.MenuItem)
                 .FirstOrDefaultAsync(c => c.Id == id);
             if (commande == null)
             {
