@@ -142,5 +142,5 @@ namespace technology_tp1
             }
             return jArray;
         }
-    }
+    } 
 }

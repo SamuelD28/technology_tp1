@@ -62,7 +62,7 @@ namespace technology_tp1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,ImageId, Category")] MenuItem menuItem)
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,ImageId, Category, Description")] MenuItem menuItem)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace technology_tp1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,ImageId, Category")] MenuItem menuItem)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,ImageId, Category, Description")] MenuItem menuItem)
         {
             if (id != menuItem.Id)
             {
