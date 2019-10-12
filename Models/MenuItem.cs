@@ -22,5 +22,8 @@ namespace technology_tp1.Models
         public int ImageId { get; set; }
 
         public ItemImage Image { get; set; }
+
+        [Required]
+        public string Description { get; set; }
     }
 }
