@@ -32,12 +32,6 @@ namespace technology_tp1.Controllers
             return View(await _context.Orders.ToListAsync());
         }
 
-        // GET: Commandes
-        public IActionResult OrderForm()
-        {
-            return PartialView();
-        }
-
         // GET: Commandes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -63,7 +57,7 @@ namespace technology_tp1.Controllers
         // GET: Commandes/Create
         public IActionResult Create()
         {
-            return View();
+            return PartialView("_OrderForm");
         }
 
         // POST: Commandes/Create
@@ -81,9 +75,9 @@ namespace technology_tp1.Controllers
                 await _context.SaveChangesAsync();
                 _cart.Clear();
                 _cart.Save();
-                return RedirectToAction(nameof(Index));
+                return Ok();
             }
-            return View(order);
+            return PartialView("_OrderForm", order);
         }
 
         // GET: Commandes/Edit/5
@@ -99,7 +93,7 @@ namespace technology_tp1.Controllers
             {
                 return NotFound();
             }
-            return View(commande);
+            return PartialView(commande);
         }
 
         // POST: Commandes/Edit/5

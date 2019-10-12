@@ -93,7 +93,7 @@ function updateTotalPriceDisplay(price) {
     $("#totalPrice").find(".price").text(price.toFixed(2) + "$");
 }
 
-new CartModal();
+let modal = new CartModal();
 updateMainMessageDisplay();
 updatButtonOrderDisplay();
 $.post("/Home/CartJson", function (data, status) {
@@ -101,3 +101,31 @@ $.post("/Home/CartJson", function (data, status) {
         updateTotalPriceDisplay(JSON.parse(data)["totalPrice"]);
     }
 });
+
+$(document).ready(function () {
+    $('#ordersCreateForm').submit(function (event) {
+        var customerName = $(this).find("#CustomerName").val();
+        var customerAdress = $(this).find("#CustomerAdress").val();
+        var customerPhoneNumber = $(this).find("#CustomerPhoneNumber").val();
+        var token = $(this).find("[name=__RequestVerificationToken]").val();
+        $.post("/Orders/Create",
+            {
+                CustomerName: customerName,
+                CustomerAdress: customerAdress,
+                CustomerPhoneNumber: customerPhoneNumber,
+                __RequestVerificationToken: token
+            },
+            function (data, status) {
+                if (status == "success") {
+                    if (data != "") {
+                        $('#ordersCreateForm').html($(data).find('#ordersCreateForm').html());
+                        modal.openFun();
+                    }
+                    else {
+                        location.reload();
+                    }
+                }
+            });
+        return false;
+    });
+}); 
