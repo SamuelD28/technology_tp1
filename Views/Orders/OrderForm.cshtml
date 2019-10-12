@@ -1,0 +1,35 @@
+﻿@model technology_tp1.Models.Order
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = "";
+}
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="CustomerName" class="control-label"></label>
+        <input asp-for="CustomerName" class="form-control" />
+        <span asp-validation-for="CustomerName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CustomerAdress" class="control-label"></label>
+        <input asp-for="CustomerAdress" class="form-control" />
+        <span asp-validation-for="CustomerAdress" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CustomerPhoneNumber" class="control-label"></label>
+        <input asp-for="CustomerPhoneNumber" class="form-control" />
+        <span asp-validation-for="CustomerPhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrdersItems" class="control-label"></label>
+        <input asp-for="OrdersItems" class="form-control" />
+        <span asp-validation-for="OrdersItems" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

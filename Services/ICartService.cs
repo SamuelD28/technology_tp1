@@ -25,16 +25,4 @@ namespace technology_tp1.Services
 
         void Save();
     }
-
-    public struct CartItem
-    {
-        public MenuItem MenuItem { get; }
-        public int Quantity { get; }
-
-        public CartItem(MenuItem item, int quantity)
-        {
-            MenuItem = item;
-            Quantity = quantity;
-        }
-    }
 }

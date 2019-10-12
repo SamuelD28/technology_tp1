@@ -11,19 +11,17 @@ namespace technology_tp1.Models
 {
     public class AppDbContext : DbContext
     {
-        private static string SeedDirectoryPath = "Seeds/";
-        private static string FileNameSeedDeliveryMan = "DeliveryManSeed.json";
-
-
         public DbSet<DeliveryMan> DeliveryMen { get; set; }
 
         public DbSet<ItemImage> ItemImages { get; set; }
 
-        public DbSet<MenuItem> MenuItems{ get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrdersItems> OrdersItems { get; set; }
 
-        public AppDbContext(){}
+        public AppDbContext() { }
 
-        public AppDbContext(DbContextOptions options):base(options){}
+        public AppDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,6 +33,10 @@ namespace technology_tp1.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<OrdersItems>()
+            .HasIndex(p => new { p.OrderId, p.MenuItemId })
+            .IsUnique(true);
+
             modelBuilder
                 .Entity<DeliveryMan>()
                 .HasData(Seed(ForgeFactory.ForgeDeliveryMan));

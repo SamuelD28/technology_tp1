@@ -21,6 +21,10 @@
 
 
   <ItemGroup>
+    <Folder Include="Areas\Commande\Controllers\" />
+    <Folder Include="Areas\Commande\Data\" />
+    <Folder Include="Areas\Commande\Models\" />
+    <Folder Include="Areas\Commande\Views\" />
     <Folder Include="General\" />
     <Folder Include="wwwroot\css\template\" />
   </ItemGroup>
