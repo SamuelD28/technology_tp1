@@ -37,7 +37,7 @@
                         <h5 class="mb-10"><b>@item.Name</b><b class="color-primary float-right">@String.Format("{0:C}", item.Price)</b></h5>
                         <div class="row">
                             <div class="col-sm-9">
-                                Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea dictumst.
+                                @item.Description
                             </div>
                             <div class="col-sm-3">
                                 <button class="w-100 btn-fill-primary plr-10">Add</button>
@@ -49,7 +49,7 @@
                       itemId="@item.Id"
                       name="@item.Name"
                       price="@item.Price"
-                      description="Description"
+                      description="@item.Description"
                       image="@item.Image.Small"
                       category="@item.Category"/>
             </div><!-- food-menu -->
