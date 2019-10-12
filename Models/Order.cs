@@ -27,7 +27,7 @@ namespace technology_tp1.Models
         public IEnumerable<CartItem> Items => OrdersItems?.Select(oi => new CartItem(oi.MenuItem, oi.Quantity));
 
         [NotMapped]
-        public decimal TotalCost => OrdersItems.Sum(o => o.Quantity * o.MenuItem.Price);
+        public decimal TotalCost => OrdersItems?.Sum(o => o.Quantity * o.MenuItem.Price) ?? 0;
     }
 
     public class OrdersItems

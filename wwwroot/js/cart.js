@@ -75,6 +75,15 @@ function updateMainMessageDisplay() {
     }
 }
 
+function updatButtonOrderDisplay() {
+    if ($("#cartItems").children().length == 0) {
+        $(".order-btn").hide();
+    }
+    else {
+        $(".order-btn").show();
+    }
+}
+
 function updateTotalPriceDisplay(price) {
     if ($("#cartItems").children().length == 0) {
         $("#totalPrice").hide();
@@ -84,16 +93,9 @@ function updateTotalPriceDisplay(price) {
     $("#totalPrice").find(".price").text(price.toFixed(2) + "$");
 }
 
-function order() {
-    $.post("/Orders/OrderForm", function (data, status) {
-        if (status == "success") {
-            updateTotalPriceDisplay(JSON.parse(data)["totalPrice"]);
-        }
-    });
-}
-
 new CartModal();
 updateMainMessageDisplay();
+updatButtonOrderDisplay();
 $.post("/Home/CartJson", function (data, status) {
     if (status == "success") {
         updateTotalPriceDisplay(JSON.parse(data)["totalPrice"]);

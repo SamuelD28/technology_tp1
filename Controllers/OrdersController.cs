@@ -75,7 +75,7 @@ namespace technology_tp1.Controllers
         {
             order.CreatedAt = DateTime.Now;
             order.OrdersItems = _cart.Items.Select(i => new OrdersItems() { MenuItem = i.MenuItem, Quantity = i.Quantity, Order = order }).ToArray();
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _cart.CartCount != 0)
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
