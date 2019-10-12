@@ -22,9 +22,12 @@ namespace technology_tp1.Controllers
         private IHttpContextAccessor _httpContextAccessor;
 
         public IEnumerable<MenuItem> MenuItems { get; }
+        public ICategoryTranslator CategoryTranslator { get; }
 
-        public HomeController(IStringLocalizer<HomeController> stringLocalizer, AppDbContext dbContext, ICartService cart, IHttpContextAccessor httpContextAccessor)
+        public HomeController(IStringLocalizer<HomeController> stringLocalizer, AppDbContext dbContext, ICartService cart, 
+            IHttpContextAccessor httpContextAccessor, IStringLocalizer<AspNetCoreICategoryTranslator> stringLocalizerCategory)
         {
+            CategoryTranslator = new AspNetCoreICategoryTranslator(stringLocalizerCategory);
             _localizer = stringLocalizer;
             MenuItems = dbContext.MenuItems.Include(m => m.Image);
             _cart = cart;

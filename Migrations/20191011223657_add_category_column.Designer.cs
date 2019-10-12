@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using technology_tp1.Models;
 
 namespace technology_tp1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191011223657_add_category_column")]
+    partial class add_category_column
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -553,7 +555,7 @@ namespace technology_tp1.Migrations
                         new
                         {
                             Id = -2,
-                            Category = 2,
+                            Category = 0,
                             ImageId = -2,
                             Name = "Chocolate cake",
                             Price = 5m
@@ -561,7 +563,7 @@ namespace technology_tp1.Migrations
                         new
                         {
                             Id = -3,
-                            Category = 1,
+                            Category = 0,
                             ImageId = -3,
                             Name = "Coke drink",
                             Price = 1.33m
@@ -569,7 +571,7 @@ namespace technology_tp1.Migrations
                         new
                         {
                             Id = -4,
-                            Category = 3,
+                            Category = 0,
                             ImageId = -4,
                             Name = "French fries",
                             Price = 4m
