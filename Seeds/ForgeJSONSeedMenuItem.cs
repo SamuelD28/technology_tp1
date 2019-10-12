@@ -18,6 +18,7 @@ namespace technology_tp1
                     Name = "All dress",
                     Price = 25.25M,
                     Category = Models.Category.Pizza,
+                    Description = "This is an all dress pizza with some green paper.",
                 }
             },
             {
@@ -28,6 +29,7 @@ namespace technology_tp1
                     Name = "Chocolate cake",
                     Price = 5M,
                     Category = Models.Category.Dessert,
+                    Description = "Taste the fluffy chocolate with more chocolate inside!",
                 }
             },
             {
@@ -38,6 +40,7 @@ namespace technology_tp1
                     Name = "Coke drink",
                     Price = 1.33M,
                     Category = Models.Category.Drink,
+                    Description = "Coke is the best drink to share with your friends.",
                 }
             },
             {
@@ -48,6 +51,7 @@ namespace technology_tp1
                     Name = "French fries",
                     Price = 4.0M,
                     Category = Models.Category.Other,
+                    Description = "Always better with some french fries.",
                 }
             },
             {
@@ -58,6 +62,7 @@ namespace technology_tp1
                     Name = "Chesse",
                     Price = 15M,
                     Category = Models.Category.Pizza,
+                    Description = "Simple but tasty",
                 }
             },
             {
@@ -68,6 +73,7 @@ namespace technology_tp1
                     Name = "Hawaiian",
                     Price = 18.25M,
                     Category = Models.Category.Pizza,
+                    Description = "Well... I guess pineapple are good. Right?",
                 }
             },
             {
@@ -78,6 +84,7 @@ namespace technology_tp1
                     Name = "Pepperoni & chesse",
                     Price = 14.58M,
                     Category = Models.Category.Pizza,
+                    Description = "Classic, cheap and really good!",
                 }
             },
         };
@@ -98,7 +105,8 @@ namespace technology_tp1
                         Name = jsonItem.Value<string>("name"),
                         Price = jsonItem.Value<decimal>("price"),
                         ImageId = jsonItem.Value<int>("imageId"),
-                        Category = (technology_tp1.Models.Category)jsonItem.Value<int>("category"),
+                        Category = (Models.Category)jsonItem.Value<int>("category"),
+                        Description = jsonItem.Value<string>("description"),
                     }); ;
                 }
                 return items.Cast<T>();
@@ -129,6 +137,7 @@ namespace technology_tp1
                 items.Add("price", new JValue(item.Value.Price));
                 items.Add("imageId", new JValue(imageId));
                 items.Add("category", new JValue(item.Value.Category));
+                items.Add("description", new JValue(item.Value.Description));
                 jArray.Add(items);
             }
             return jArray;
