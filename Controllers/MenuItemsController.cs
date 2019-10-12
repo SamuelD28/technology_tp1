@@ -5,16 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using technology_tp1.Extension;
 using technology_tp1.Models;
+using Microsoft.Extensions.Localization;
 
 namespace technology_tp1.Controllers
 {
     public class MenuItemsController : Controller
     {
+        private readonly ICategoryTranslator _categoryTranslator;
         private readonly AppDbContext _context;
 
-        public MenuItemsController(AppDbContext context)
+
+        public MenuItemsController(AppDbContext context, IStringLocalizer<AspNetCoreICategoryTranslator> stringLocalizer)
         {
+            _categoryTranslator = new AspNetCoreICategoryTranslator(stringLocalizer);
             _context = context;
         }
 
@@ -48,7 +53,7 @@ namespace technology_tp1.Controllers
         public IActionResult Create()
         {
             ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Name");
-            ViewData["Category"] = new SelectList(EnumExtension.GetValues<Models.Category>().Select(v => new { Value = v, Name = v.ToString() }), "Value", "Name");
+            ViewData["Category"] = new SelectList(EnumExtension.GetValues<Models.Category>().Select(v => new { Value = v, Name = _categoryTranslator.Translate(v) }), "Value", "Name");
             return View();
         }
 
@@ -83,7 +88,7 @@ namespace technology_tp1.Controllers
                 return NotFound();
             }
             ViewData["ImageId"] = new SelectList(_context.ItemImages, "Id", "Name", menuItem.ImageId);
-            ViewData["Category"] = new SelectList(EnumExtension.GetValues<Models.Category>().Select(v => new { Value = v, Name = v.ToString() }), "Value", "Name");
+            ViewData["Category"] = new SelectList(EnumExtension.GetValues<Models.Category>().Select(v => new { Value = v, Name = _categoryTranslator.Translate(v) }), "Value", "Name");
             return View(menuItem);
         }
 

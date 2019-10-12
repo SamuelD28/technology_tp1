@@ -19,7 +19,7 @@
         <div class="col-sm-12">
             <ul class="selecton brdr-b-primary mb-70">
                 <li><a class="active" href="#" data-select="*"><b>ALL</b></a></li>
-                @foreach (var c in technology_tp1.EnumExtension.GetValues<technology_tp1.Models.Category>())
+                @foreach (var c in technology_tp1.Extension.EnumExtension.GetValues<technology_tp1.Models.Category>())
                 {
                     <li><a href="#" data-select="@c"><b>@c</b></a></li>
                 }
