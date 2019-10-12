@@ -4,6 +4,7 @@
 
 @inject IViewLocalizer Localizer
 @inject ICartService Cart
+@inject AppDbContext context
 
 @{
     ViewData["Title"] = "Cart";
@@ -37,7 +38,7 @@
                       itemId="@item.MenuItem.Id"
                       name="@item.MenuItem.Name"
                       price="@item.MenuItem.Price"
-                      description="Description"
+                      description="@item.MenuItem.Description"
                       image="@item.MenuItem.Image.Small"
                       quantity="@item.Quantity" />
             </div><!-- food-menu -->
@@ -51,41 +52,25 @@
             </div>
         </div><!-- container -->
     }
-    @*@foreach (var item in Cart.Items)
-        {
-            <div class="row menu-item modal-btn">
-                <div class="col-sm-3 d-none d-md-block" style="background-image: url('data:image/png;base64,@item.MenuItem.Image.Small'); background-size: cover; background-position: center"></div>
-                <div class="col-md-4 col-6">
-                    <p class="vertical-center">@item.MenuItem.Name</p>
-                </div>
-                <div class="col-md-2 col-2">
-                    <p class="vertical-center">@String.Format("{0:C}", item.MenuItem.Price)</p>
-                </div>
-                <div class="col-md-2 col-2">
-                    <p class="vertical-center item-quantity">@item.Quantity</p>
-                </div>
-                <div class="col-2 col-md-1 d-none d-sm-block">
-                    <p class="vertical-center text-center"><i class="vertical-center fas fa-minus fa-2x remove-item-btn"></i></p>
-                </div>
-                <data class="d-none"
-                      itemId="@item.MenuItem.Id"
-                      name="@item.MenuItem.Name"
-                      price="@item.MenuItem.Price"
-                      description="Description"
-                      image="@item.MenuItem.Image.Small"
-                      quantity="@item.Quantity" />
-            </div>
-        }*@
-
-    @*@await Html.PartialAsync("_ItemModal", new ModalContent())*@
-
+</div><!-- row -->
+<div class="row">
+    <button class="w-100 btn-fill-primary plr-10 order-btn">@Localizer["Order"]</button>
+</div><!-- row -->
+<div class="row">
 </div><!-- row -->
 
-<div id="totalPrice" class="heading">
+<div id="totalPrice" class="footer">
     <h1>
         Total&nbsp;:&nbsp;<span class="price">0.00$</span>
     </h1>
 </div>
+@{
+    ModalContent modalContent = new ModalContent();
+    modalContent.Content = await Html.PartialAsync("_OrderForm", new technology_tp1.Models.Order());
+    modalContent.Width = ModalContent.ModalWidth._50;
+}
+
+@await Html.PartialAsync("_Modal", modalContent)
 
 @section Scripts {
     <script type="text/javascript" src="~/js/BaseModal.js"></script>

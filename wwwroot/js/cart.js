@@ -84,6 +84,14 @@ function updateTotalPriceDisplay(price) {
     $("#totalPrice").find(".price").text(price.toFixed(2) + "$");
 }
 
+function order() {
+    $.post("/Orders/OrderForm", function (data, status) {
+        if (status == "success") {
+            updateTotalPriceDisplay(JSON.parse(data)["totalPrice"]);
+        }
+    });
+}
+
 new CartModal();
 updateMainMessageDisplay();
 $.post("/Home/CartJson", function (data, status) {

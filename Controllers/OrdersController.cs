@@ -30,7 +30,7 @@ namespace technology_tp1.Controllers
         // GET: Commandes
         public IActionResult OrderForm()
         {
-            return View();
+            return PartialView();
         }
 
         // GET: Commandes/Details/5
@@ -63,7 +63,7 @@ namespace technology_tp1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("")] Order commande)
+        public async Task<IActionResult> Create(Order commande)
         {
             if (ModelState.IsValid)
             {

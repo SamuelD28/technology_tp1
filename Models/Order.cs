@@ -23,7 +23,7 @@ namespace technology_tp1.Models
         public string CustomerPhoneNumber { get; set; }
         public IEnumerable<OrdersItems> OrdersItems { get; set; }
         [NotMapped]
-        public IEnumerable<CartItem> Items => OrdersItems.Select(oi => new CartItem(oi.MenuItem, oi.Quantity));
+        public IEnumerable<CartItem> Items => OrdersItems?.Select(oi => new CartItem(oi.MenuItem, oi.Quantity));
     }
 
     public class OrdersItems

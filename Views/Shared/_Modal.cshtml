@@ -2,10 +2,23 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 
 @inject IViewLocalizer Localizer
+
+@{
+    string classContent = "modal-content-fit";
+    switch (Model.Width)
+    {
+        case ModalContent.ModalWidth.Fit:
+            classContent = "modal-content-fit";
+            break;
+        case ModalContent.ModalWidth._50:
+            classContent = "modal-content-50";
+            break;
+    }
+}
 <!-- The Modal -->
 <div id="myModal" class="modal">
     <!-- Modal content -->
-    <div class="modal-content">
+    <div class="@classContent">
         <div class="container-fluid h-100 d-flex flex-column">
             <div class="row flex-row-reverse">
                 <div class="modal-close">&times;</div>

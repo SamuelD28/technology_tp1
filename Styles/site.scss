@@ -16,12 +16,12 @@
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content-fit, .modal-content-50 {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: fit-content;
+    width: 100%;
 }
 
 #modalPicture {
@@ -46,4 +46,22 @@
 
 .menu-item {
     margin-bottom: 1.2rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .modal-content-fit {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: fit-content;
+    }
+
+    .modal-content-50 {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
 }

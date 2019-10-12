@@ -11,13 +11,24 @@ namespace technology_tp1.Models
     [NotMapped]
     public class ModalContent
     {
+        public enum ModalWidth { Fit, _50};
+
         // https://dotnetthoughts.net/how-to-reuse-html-snippets-in-cshtml-view/
-        private Func<object, Microsoft.AspNetCore.Html.IHtmlContent> _function;
+        private IHtmlContent _content;
 
         public void SetContentFromRazor(Func<object, Microsoft.AspNetCore.Html.IHtmlContent> razor)
         {
-            _function = razor;
+            _content = razor?.Invoke(null); ;
         }
-        public IHtmlContent Content => _function?.Invoke(null);
+        public IHtmlContent Content
+        {
+            get => _content;
+            set
+            {
+                _content = value;
+            }
+        }
+
+        public ModalWidth Width { get; set; } = ModalWidth.Fit;
     }
 }
