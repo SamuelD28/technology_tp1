@@ -1,4 +1,7 @@
 ﻿@model technology_tp1.Models.Order
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
 
 @{
     Layout = "_LayoutAdmin";
@@ -7,16 +10,26 @@
 
 <h1>Edit</h1>
 
-<h4>MenuItem</h4>
+<h4>Order</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-controller="Orders" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="OrdersItems" class="control-label"></label>
-                <input asp-for="OrdersItems" class="form-control" />
-                <span asp-validation-for="OrdersItems" class="text-danger"></span>
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerAdress" class="control-label"></label>
+                <input asp-for="CustomerAdress" class="form-control" />
+                <span asp-validation-for="CustomerAdress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerPhoneNumber" class="control-label"></label>
+                <input asp-for="CustomerPhoneNumber" class="form-control" />
+                <span asp-validation-for="CustomerPhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CreatedAt" class="control-label"></label>
@@ -24,20 +37,12 @@
                 <span asp-validation-for="CreatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                <label asp-for="DeliveredAt" class="control-label"></label>
+                <input asp-for="DeliveredAt" class="form-control" />
+                <span asp-validation-for="DeliveredAt" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <select asp-for="CreatedAt" class="form-control" asp-items="ViewBag.ImageId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <select asp-for="CreatedAt" class="form-control" asp-items="ViewBag.Category"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group d-flex justify-content-between">
+                <input type="submit" value="@Localizer["ConfirmOrder"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
